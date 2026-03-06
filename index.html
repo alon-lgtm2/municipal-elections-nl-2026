@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>הצבעה בהולנד — המדריך לישראלים</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#E8650A;
+  --blue:#003DA5;
+  --dark:#111827;
+  --mid:#374151;
+  --muted:#6B7280;
+  --light:#F3F4F6;
+  --white:#FFFFFF;
+  --cream:#FDFAF5;
+  --border:#E5E7EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--dark);direction:rtl}
+nav{background:var(--white);border-bottom:3px solid var(--orange);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-flags{font-size:20px}
+.logo-text{font-family:'Frank Ruhl Libre',serif;font-size:17px;font-weight:700;color:var(--blue);line-height:1.2}
+.logo-text small{display:block;font-size:11px;font-weight:400;color:var(--muted);font-family:'Heebo',sans-serif}
+.nav-links{display:flex;gap:2px}
+.nav-links a{padding:7px 13px;border-radius:6px;font-size:13.5px;font-weight:500;color:var(--mid);transition:all .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{background:var(--orange);color:var(--white)}
+.hero{background:linear-gradient(140deg,#002f87 0%,var(--blue) 45%,#1a4fa8 100%);color:var(--white);padding:68px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:48px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-emoji{font-size:52px;margin-bottom:14px}
+.hero h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(26px,4.5vw,50px);font-weight:900;line-height:1.15;margin-bottom:14px}
+.hero h1 em{color:#FFD700;font-style:normal}
+.hero-sub{font-size:16px;opacity:.85;max-width:520px;margin:0 auto 36px;line-height:1.75}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--orange);color:var(--white);box-shadow:0 4px 18px rgba(232,101,10,.45)}
+.btn-primary:hover{box-shadow:0 8px 26px rgba(232,101,10,.6)}
+.btn-secondary{background:rgba(255,255,255,.12);color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+.btn-secondary:hover{background:rgba(255,255,255,.2)}
+.hero-pills{display:flex;gap:10px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.hero-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 16px;font-size:12px;opacity:.85}
+.wrap{max-width:1080px;margin:0 auto;padding:60px 24px}
+.section-label{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+h2.title{font-family:'Frank Ruhl Libre',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--blue);margin-bottom:8px}
+p.subtitle{color:var(--muted);font-size:15px;line-height:1.65;margin-bottom:36px}
+.elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:620px){.elig-grid{grid-template-columns:1fr}}
+.elig-col{background:var(--white);border-radius:14px;padding:28px;box-shadow:0 1px 8px rgba(0,0,0,.05)}
+.elig-col-head{font-weight:700;font-size:15px;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.check-row{display:flex;gap:10px;margin-bottom:13px;font-size:14px;line-height:1.55;color:var(--mid)}
+.check-icon{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:1px;font-weight:700}
+.ci-yes{background:#DCFCE7;color:#16A34A}
+.ci-no{background:#FEE2E2;color:#DC2626}
+.elig-tip{background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:13px 16px;font-size:13px;color:#92400E;line-height:1.55;margin-top:18px}
+.elig-tip strong{display:block;margin-bottom:3px}
+.steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.step-card{background:var(--white);border-radius:14px;padding:26px 20px;border-right:4px solid var(--orange);box-shadow:0 1px 8px rgba(0,0,0,.05)}
+.step-n{font-family:'Frank Ruhl Libre',serif;font-size:38px;font-weight:900;color:var(--orange);opacity:.25;line-height:1}
+.step-icon{font-size:24px;margin:6px 0 10px}
+.step-title{font-weight:700;font-size:15px;color:var(--blue);margin-bottom:6px}
+.step-text{font-size:13.5px;color:var(--mid);line-height:1.6}
+.city-hero{background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.09);margin-bottom:8px}
+.city-banner{background:linear-gradient(120deg,#002f87,var(--blue));color:var(--white);padding:26px 30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.city-banner-icon{font-size:44px}
+.city-banner-text h2{font-family:'Frank Ruhl Libre',serif;font-size:24px;font-weight:700}
+.city-banner-text p{font-size:13px;opacity:.75;margin-top:3px}
+.city-badge{margin-right:auto;background:rgba(255,255,255,.14);border-radius:10px;padding:10px 18px;text-align:center}
+.city-badge .big{font-size:20px;font-weight:800}
+.city-badge .sml{font-size:10px;opacity:.7;margin-top:1px}
+.tab-bar{background:var(--light);border-bottom:2px solid var(--border);display:flex;overflow-x:auto;padding:0 24px}
+.tab-btn{padding:14px 18px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab-btn.active,.tab-btn:hover{color:var(--blue);border-bottom-color:var(--orange)}
+.tab-pane{display:none;padding:28px 30px}
+.tab-pane.active{display:block}
+@media(max-width:600px){.tab-pane{padding:20px 16px}}
+.party-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;margin-bottom:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.party-card:hover{border-color:var(--orange);box-shadow:0 4px 18px rgba(232,101,10,.1)}
+.party-top{display:grid;grid-template-columns:8px 1fr auto;align-items:stretch}
+.party-stripe{width:8px}
+.party-body{padding:16px 18px}
+.party-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.party-name{font-weight:700;font-size:16px}
+.party-nl{font-size:12px;color:var(--muted)}
+.spectrum{display:inline-block;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px}
+.s-left{background:#DBEAFE;color:#1D4ED8}.s-center{background:#FEF3C7;color:#92400E}.s-right{background:#FEE2E2;color:#991B1B}.s-green{background:#DCFCE7;color:#166534}.s-local{background:#F3E8FF;color:#6B21A8}
+.party-desc{font-size:13.5px;color:var(--mid);line-height:1.6;margin-bottom:10px}
+.party-tags{display:flex;gap:7px;flex-wrap:wrap}
+.ptag{font-size:11px;background:var(--light);color:var(--mid);padding:3px 10px;border-radius:20px}
+.party-seats-col{padding:16px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border);min-width:72px}
+.seats-n{font-family:'Frank Ruhl Libre',serif;font-size:28px;font-weight:700;color:var(--blue)}
+.seats-l{font-size:10px;color:var(--muted);text-align:center;margin-top:2px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:15px}
+.info-card{background:var(--light);border-radius:12px;padding:20px;border-right:3px solid var(--orange)}
+.info-card .ic-icon{font-size:26px;margin-bottom:10px}
+.info-card .ic-title{font-weight:700;font-size:14px;color:var(--blue);margin-bottom:5px}
+.info-card .ic-text{font-size:13px;color:var(--mid);line-height:1.6}
+.alert{display:flex;gap:10px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px 18px;font-size:13.5px;color:#1E40AF;line-height:1.55;margin-top:18px}
+.compare-checks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.cchk{display:flex;align-items:center;gap:7px;background:var(--white);border:2px solid var(--border);border-radius:9px;padding:8px 14px;cursor:pointer;font-size:13.5px;font-weight:500;transition:all .18s}
+.cchk:hover{border-color:var(--orange)}
+.cchk input{accent-color:var(--orange);width:15px;height:15px}
+.ctable{width:100%;border-collapse:collapse;font-size:13.5px}
+.ctable th{background:var(--blue);color:var(--white);padding:11px 15px;text-align:right;font-weight:600}
+.ctable td{padding:12px 15px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.ctable tr:hover td{background:#FFF7ED}
+.ctable .topic-col{font-weight:600;color:var(--blue);white-space:nowrap}
+/* SECURITY */
+.btn-sm{padding:10px 22px;font-size:14px;border-radius:9px}
+.traffic-grid{display:grid;gap:20px}
+.traffic-block{border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.traffic-head{display:flex;align-items:center;gap:12px;padding:16px 22px;color:var(--white)}
+.traffic-head .t-icon{font-size:26px}
+.traffic-head .t-title{font-size:17px;font-weight:700}
+.traffic-head .t-sub{font-size:12px;opacity:.8;margin-top:2px}
+.traffic-body{background:var(--white);padding:18px 22px;display:grid;gap:14px}
+.traffic-item{display:flex;gap:12px;align-items:flex-start}
+.traffic-item-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.traffic-item-name{font-weight:700;font-size:14px;margin-bottom:3px}
+.traffic-item-desc{font-size:13px;color:var(--mid);line-height:1.55}
+.security-note{background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:16px 20px;font-size:13px;color:var(--mid);line-height:1.65;margin-top:6px}
+.security-note strong{color:var(--dark);display:block;margin-bottom:4px}
+.stat-pill{display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;margin-bottom:20px}
+footer{background:var(--blue);color:rgba(255,255,255,.72);text-align:center;padding:36px 24px;font-size:13px;line-height:1.8;margin-top:16px}
+footer strong{color:var(--white)}
+.disclaimer{max-width:580px;margin:12px auto 0;font-size:11.5px;opacity:.55}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .hero{padding:48px 20px 40px}
+  .city-banner{gap:12px}
+  .city-badge{margin-right:0;width:100%}
+  .party-seats-col{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="logo-flags">🇳🇱🇮🇱</div>
+      <div class="logo-text">הצבעה בהולנד<small>מדריך לישראלים</small></div>
+    </div>
+    <div class="nav-links">
+      <a onclick="scrollTo('s-elig')">זכאות</a>
+      <a onclick="scrollTo('s-how')">איך מצביעים</a>
+      <a onclick="scrollTo('s-amstelveen')">Amstelveen</a>
+      <a onclick="scrollTo('s-security')" style="background:var(--orange);color:white">🛡️ ביטחון הקהילה</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-emoji">🇳🇱 🗳️ 🇮🇱</div>
+  <h1>הצבעה בהולנד —<br/><em>כל מה שצריך לדעת</em></h1>
+  <p class="hero-sub">מדריך מיוחד לישראלים שגרים בהולנד: זכאות, שיטת הבחירות, המפלגות המקומיות — וסקשן ייעודי על ביטחון הקהילה היהודית.</p>
+  <div class="hero-btns">
+    <button class="btn btn-primary" onclick="scrollTo('s-amstelveen')">📍 Amstelveen</button>
+    <button class="btn btn-secondary" onclick="scrollTo('s-security')">🛡️ ביטחון הקהילה</button>
+  </div>
+  <div class="hero-pills">
+    <div class="hero-pill">🏠 ~20,000 ישראלים בהולנד</div>
+    <div class="hero-pill">📅 בחירות מרץ 2026</div>
+    <div class="hero-pill">⏱️ 5 שנות תושבות נדרשות</div>
+  </div>
+</div>
+
+<!-- ELIGIBILITY -->
+<div class="wrap" id="s-elig">
+  <div class="section-label">⚠️ חשוב ראשון</div>
+  <h2 class="title">האם אני רשאי/ת להצביע?</h2>
+  <p class="subtitle">כאזרח ישראלי בהולנד — הזכות להצביע בבחירות המקומיות תלויה בכמה תנאים ברורים</p>
+  <div class="elig-grid">
+    <div class="elig-col">
+      <div class="elig-col-head" style="color:#166534">✅ רשאים להצביע</div>
+      <div class="check-row"><div class="check-icon ci-yes">✓</div><span>גרתם ברציפות בהולנד לפחות <strong>5 שנים</strong></span></div>
+      <div class="check-row"><div class="check-icon ci-yes">✓</div><span>גיל 18 ומעלה ביום הבחירות</span></div>
+      <div class="check-row"><div class="check-icon ci-yes">✓</div><span>רשומים ב-BRP (מרשם האוכלוסין) בעיר מגוריכם</span></div>
+      <div class="check-row"><div class="check-icon ci-yes">✓</div><span>מחזיקים בהיתר שהייה (verblijfsvergunning) תקף</span></div>
+      <div class="elig-tip"><strong>📋 איך נרשמים ל-BRP?</strong> פנו לעיריית מגוריכם (Stadhuis) עם דרכון + הוכחת כתובת. ההרשמה חינמית וחייבת להיות לפני הבחירות.</div>
+    </div>
+    <div class="elig-col">
+      <div class="elig-col-head" style="color:#991B1B">❌ לא רשאים להצביע</div>
+      <div class="check-row"><div class="check-icon ci-no">✗</div><span>פחות מ-5 שנות תושבות (אזרחי EU פטורים)</span></div>
+      <div class="check-row"><div class="check-icon ci-no">✗</div><span>לא רשומים ב-BRP של העיר שלכם</span></div>
+      <div class="check-row"><div class="check-icon ci-no">✗</div><span>שהות על ויזת תיירות בלבד</span></div>
+      <div class="check-row"><div class="check-icon ci-no">✗</div><span>קיבלתם צו שלילת זכות הצבעה מבית משפט</span></div>
+      <div class="elig-tip" style="border-color:#FCA5A5;background:#FEF2F2;color:#7F1D1D"><strong>⚠️ אזרחות ישראלית</strong> שמירה על האזרחות הישראלית אינה מונעת הצבעה בהולנד. ניתן להחזיק שתי אזרחויות.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div style="background:var(--white);padding:60px 0" id="s-how">
+  <div class="wrap" style="padding-top:0;padding-bottom:0">
+    <div class="section-label">📖 המדריך</div>
+    <h2 class="title">איך מצביעים בהולנד?</h2>
+    <p class="subtitle">השיטה שונה מישראל — אין ראש ממשלה נבחר ישיר, ומצביעים לרשימה מקומית</p>
+    <div class="steps-row">
+      <div class="step-card"><div class="step-n">01</div><div class="step-icon">📬</div><div class="step-title">קבלת הזמנה</div><div class="step-text">כ-3 שבועות לפני הבחירות תקבלו <strong>oproepkaart</strong> בדואר לכתובתכם הרשומה. שמרו אותו!</div></div>
+      <div class="step-card"><div class="step-n">02</div><div class="step-icon">🔍</div><div class="step-title">לימוד המצעים</div><div class="step-text">השתמשו בכלי "מצא את המפלגה שלי" למטה — ובדפי המפלגות — כדי להבין מי מייצג אתכם.</div></div>
+      <div class="step-card"><div class="step-n">03</div><div class="step-icon">🏫</div><div class="step-title">הגיעו לקלפי</div><div class="step-text">הלכו לקלפי שלכם עם כרטיס ההזמנה + תעודת זהות. הקלפיות פתוחות <strong>07:30 – 21:00</strong>.</div></div>
+      <div class="step-card"><div class="step-n">04</div><div class="step-icon">✏️</div><div class="step-title">סימון בפתק</div><div class="step-text">על הפתק תמצאו רשימות ומועמדים. מסמנים <strong>עיגול אדום</strong> על שם מועמד ספציפי — או על שם הרשימה.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMSTELVEEN -->
+<div class="wrap" id="s-amstelveen">
+  <div class="section-label">📍 עיר לדוגמה</div>
+  <h2 class="title">Amstelveen — המדריך המקומי</h2>
+  <p class="subtitle">אמסטלוון היא הבית לקהילה הישראלית הגדולה בהולנד. הנה כל מה שצריך לדעת.</p>
+  <div class="city-hero">
+    <div class="city-banner">
+      <div class="city-banner-icon">🌷</div>
+      <div class="city-banner-text"><h2>Amstelveen</h2><p>צפון הולנד · ~95,000 תושבים · מרכז הקהילה הישראלית בהולנד</p></div>
+      <div class="city-badge"><div class="big">~6,000</div><div class="sml">ישראלים מוערכים</div></div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab-btn active" onclick="showTab(this,'tp-parties')">🏛️ מפלגות</div>
+      <div class="tab-btn" onclick="showTab(this,'tp-voting')">📅 מידע הצבעה</div>
+      <div class="tab-btn" onclick="showTab(this,'tp-compare')">⚖️ השוואה</div>
+    </div>
+    <div class="tab-pane active" id="tp-parties">
+      <div class="alert" style="margin-bottom:22px"><span>ℹ️</span><span>הנתונים מבוססים על בחירות 2022 ויעודכנו ל-2026. מספר המנדטים מתוך 29.</span></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#E8650A"></div><div class="party-body"><div class="party-name-row"><span class="party-name">D66</span><span class="party-nl">Democraten 66</span><span class="spectrum s-center">מרכז-שמאל</span></div><div class="party-desc">מפלגה ליברלית-פרוגרסיבית — הפופולרית ביותר בקרב מהגרים ועובדי היי-טק. מדגישה חינוך איכותי, שוויון הזדמנויות, קיימות וזכויות אזרח. בעד פתיחות ושיתוף פעולה אירופי.</div><div class="party-tags"><span class="ptag">📚 חינוך</span><span class="ptag">🌍 פתיחות</span><span class="ptag">🌿 קיימות</span><span class="ptag">🏥 בריאות</span></div></div><div class="party-seats-col"><div class="seats-n">7</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#003DA5"></div><div class="party-body"><div class="party-name-row"><span class="party-name">VVD</span><span class="party-nl">Volkspartij voor Vrijheid en Democratie</span><span class="spectrum s-right">מרכז-ימין</span></div><div class="party-desc">המפלגה הגדולה בהולנד — שמרנית-ליברלית. מעדיפה שוק חופשי, מיסוי נמוך ופחות בירוקרטיה. מדיניות הגירה מחמירה יחסית, אך גישה מעשית ולא אידיאולוגית.</div><div class="party-tags"><span class="ptag">💼 עסקים</span><span class="ptag">🔒 ביטחון</span><span class="ptag">📉 מיסוי נמוך</span><span class="ptag">🏗️ תשתיות</span></div></div><div class="party-seats-col"><div class="seats-n">6</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#AE1C28"></div><div class="party-body"><div class="party-name-row"><span class="party-name">PvdA</span><span class="party-nl">Partij van de Arbeid</span><span class="spectrum s-left">שמאל</span></div><div class="party-desc">מפלגת שמאל סוציאל-דמוקרטית. דואגת לשוויון חברתי, שכר הוגן, דיור בר-השגה ושירותים ציבוריים חזקים. קרובה לאיגודי עובדים.</div><div class="party-tags"><span class="ptag">🏠 דיור</span><span class="ptag">👷 עובדים</span><span class="ptag">🤝 שוויון</span><span class="ptag">🚌 תח"צ</span></div></div><div class="party-seats-col"><div class="seats-n">4</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#15803d"></div><div class="party-body"><div class="party-name-row"><span class="party-name">GroenLinks</span><span class="party-nl">GreenLeft</span><span class="spectrum s-green">שמאל-ירוק</span></div><div class="party-desc">ממוקד במשבר האקלים, צדק חברתי וקהילה רב-תרבותית. לרוב פועל בקואליציה עם PvdA. הקול הירוק הרדיקלי ביותר.</div><div class="party-tags"><span class="ptag">🌿 אקלים</span><span class="ptag">🚲 ניידות</span><span class="ptag">🌍 רב-תרבות</span><span class="ptag">☀️ אנרגיה</span></div></div><div class="party-seats-col"><div class="seats-n">3</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#6B21A8"></div><div class="party-body"><div class="party-name-row"><span class="party-name">Amstelveen Anders</span><span class="party-nl">מפלגה מקומית עצמאית</span><span class="spectrum s-local">מקומי</span></div><div class="party-desc">מפלגה שאינה שייכת לאף זרם לאומי. מתמקדת אך ורק ב-Amstelveen: שיפור שכונות, תחבורה מקומית ופיתוח מרכז העיר.</div><div class="party-tags"><span class="ptag">🌳 ירוק עירוני</span><span class="ptag">🏘️ שכונות</span><span class="ptag">🚦 תחבורה</span></div></div><div class="party-seats-col"><div class="seats-n">3</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+      <div class="party-card"><div class="party-top"><div class="party-stripe" style="background:#92400E"></div><div class="party-body"><div class="party-name-row"><span class="party-name">CDA</span><span class="party-nl">Christen-Democratisch Appèl</span><span class="spectrum s-center">מרכז</span></div><div class="party-desc">מפלגת מרכז שמרנית עם ערכים נוצריים-חברתיים. מדגישה אחריות קהילתית, משפחה, חופש בחינוך ושירות ציבורי. מסורתית אך מתונה.</div><div class="party-tags"><span class="ptag">👨‍👩‍👧 משפחה</span><span class="ptag">🤲 קהילה</span><span class="ptag">📜 מסורת</span><span class="ptag">🏛️ יציבות</span></div></div><div class="party-seats-col"><div class="seats-n">3</div><div class="seats-l">מנדטים 2022</div></div></div></div>
+    </div>
+    <div class="tab-pane" id="tp-voting">
+      <div class="info-grid">
+        <div class="info-card"><div class="ic-icon">📅</div><div class="ic-title">תאריך הבחירות</div><div class="ic-text">הבחירות המקומיות ההולנדיות הבאות: <strong>מרץ 2026</strong>. התאריך המדויק יפורסם בקרוב.</div></div>
+        <div class="info-card"><div class="ic-icon">🏫</div><div class="ic-title">מיקום קלפיות</div><div class="ic-text">ב-Amstelveen: בתי ספר, מרכזים קהילתיים ובנייני ציבור. תקבלו כתובת ספציפית בכרטיס ההזמנה.</div></div>
+        <div class="info-card"><div class="ic-icon">🕐</div><div class="ic-title">שעות פתיחה</div><div class="ic-text"><strong>07:30 – 21:00</strong> ביום הבחירות. הגיעו לפני 21:00 — הקלפיות נסגרות בדיוק.</div></div>
+        <div class="info-card"><div class="ic-icon">🪪</div><div class="ic-title">מה להביא</div><div class="ic-text">חובה: <strong>oproepkaart</strong> (יישלח בדואר) + תעודת זהות תקפה. דרכון ישראלי מתקבל.</div></div>
+        <div class="info-card"><div class="ic-icon">📮</div><div class="ic-title">הצבעה בדואר</div><div class="ic-text">ניתן לבקש הצבעה בדואר (briefstemmen) — יש לפנות לעירייה כ-6 שבועות מראש.</div></div>
+        <div class="info-card"><div class="ic-icon">♿</div><div class="ic-title">נגישות</div><div class="ic-text">כל הקלפיות חייבות להיות נגישות. ניתן לבקש עזרה מהצוות בלי בושה.</div></div>
+      </div>
+      <div class="alert"><span>💡</span><span><strong>לא קיבלתם כרטיס הזמנה?</strong> פנו לעיריית Amstelveen כ-2 שבועות לפני הבחירות. ייתכן שהכתובת ב-BRP שלכם אינה מעודכנת.</span></div>
+    </div>
+    <div class="tab-pane" id="tp-compare">
+      <p style="font-size:14px;color:var(--mid);margin-bottom:18px;line-height:1.6">בחרו מפלגות לפי עמדותיהן בנושאים שחשובים לישראלים ב-Amstelveen:</p>
+      <div class="compare-checks">
+        <label class="cchk"><input type="checkbox" value="d66" onchange="renderCompare()" checked> D66</label>
+        <label class="cchk"><input type="checkbox" value="vvd" onchange="renderCompare()" checked> VVD</label>
+        <label class="cchk"><input type="checkbox" value="pvda" onchange="renderCompare()"> PvdA</label>
+        <label class="cchk"><input type="checkbox" value="gl" onchange="renderCompare()"> GroenLinks</label>
+        <label class="cchk"><input type="checkbox" value="cda" onchange="renderCompare()"> CDA</label>
+        <label class="cchk"><input type="checkbox" value="aa" onchange="renderCompare()"> Amstelveen Anders</label>
+      </div>
+      <div id="compare-out"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY SECTION -->
+<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:60px 0" id="s-security">
+  <div class="wrap" style="padding-top:0;padding-bottom:0">
+    <div class="section-label" style="background:var(--orange)">🛡️ מבט מהקהילה</div>
+    <h2 class="title" style="color:white">מה חשוב לנו בבחירות האלה?</h2>
+    <p class="subtitle" style="color:rgba(255,255,255,.72)">הקשר, אזהרות, ועמדות המפלגות — מנקודת המבט של הקהילה הישראלית-יהודית בהולנד</p>
+
+    <!-- DISCLAIMER -->
+    <div class="security-note" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);margin-bottom:32px">
+      <strong style="color:white">⚠️ הבהרה</strong>
+      סקשן זה אינו ניטרלי — הוא מציג את הנושאים <em>מנקודת המבט של הקהילה הישראלית-יהודית</em>. הנתונים מבוססים על דוח CIDI 2025/2026, הצבעות המועצה, והצהרות מצע רשמיות. שאר האתר ממשיך להציג מידע ניטרלי על כלל הנושאים.
+    </div>
+
+    <!-- STAT ROW -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:36px">
+      <div style="background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.35);border-radius:12px;padding:18px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:#F87171;font-family:'Frank Ruhl Libre',serif">245%</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px">זינוק בתלונות אנטישמיות<br/>בהולנד — CIDI 2025/2026</div>
+      </div>
+      <div style="background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.3);border-radius:12px;padding:18px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:#FDE047;font-family:'Frank Ruhl Libre',serif">17+</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px">סיעות שונות במועצת Amstelveen<br/>פיצול פוליטי גבוה</div>
+      </div>
+      <div style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);border-radius:12px;padding:18px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:#93C5FD;font-family:'Frank Ruhl Libre',serif">~6K</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px">ישראלים ב-Amstelveen<br/>כוח הצבעה משמעותי</div>
+      </div>
+    </div>
+
+    <!-- CONTEXT BLOCK -->
+    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px;margin-bottom:32px">
+      <h3 style="color:white;font-size:18px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px">🧭 הקשר — על מה הבחירות האלה באמת?</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.75">
+            בחירות מקומיות בהולנד עוסקות פורמלית בנושאים מוניציפליים: דיור, תחבורה, חינוך, שטחים ירוקים. אך בפועל — <strong style="color:white">הרכב המועצה משפיע גם על נושאים שמשמעותיים לנו</strong>:
+            <br/><br/>
+            <strong style="color:#93C5FD">📍 רמה מקומית:</strong> תקצוב אבטחת בתי כנסת ובתי ספר יהודיים, היתרי הפגנות בשכונות, קבלת מרכזי פליטים, תמיכה במוסדות קהילתיים.
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.75">
+            <strong style="color:#FCA5A5">📍 הקשר לאומי:</strong> מפלגות הפועלות ברמה המוניציפלית הן חלק מאותן מפלגות שמצביעות בפרלמנט הלאומי. הצבעה על BDS ברמה המקומית היא לרוב שיקוף של עמדת המפלגה ברמה הארצית.
+            <br/><br/>
+            <strong style="color:#86EFAC">💡 למה זה חשוב:</strong> קהילה מאורגנת שמצביעה יחד יכולה להשפיע ממשית — ב-Amstelveen ~6,000 ישראלים הם כוח לא מבוטל.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WATCHLIST -->
+    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px;margin-bottom:32px">
+      <h3 style="color:white;font-size:18px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px">👁️ על מה כדאי לשים לב?</h3>
+      <div style="display:grid;gap:14px">
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="background:rgba(239,68,68,.2);border-radius:8px;padding:8px 12px;font-size:18px;flex-shrink:0">🚩</div>
+          <div>
+            <div style="color:white;font-weight:700;font-size:14px;margin-bottom:4px">הצבעות BDS — ברמה מקומית ולאומית</div>
+            <div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">האם המפלגה הצביעה בעד הצעות BDS במועצת העיר? האם חברי הפרלמנט שלה תמכו בחרמות? הפרדה בין "מקומי" ל"לאומי" היא לרוב פיקטיבית.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="background:rgba(239,68,68,.2);border-radius:8px;padding:8px 12px;font-size:18px;flex-shrink:0">🏕️</div>
+          <div>
+            <div style="color:white;font-weight:700;font-size:14px;margin-bottom:4px">מדיניות כלפי פליטים ומרכזי קליטה</div>
+            <div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">חלק מהמפלגות הליברליות-שמאליות תומכות בהקמת מרכזי קליטה בשכונות מגורים. זה לגיטימי, אך חשוב לדעת — שינוי בפרופיל שכונה עלול להשפיע על אקלים הביטחון של הקהילה.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="background:rgba(239,68,68,.2);border-radius:8px;padding:8px 12px;font-size:18px;flex-shrink:0">📢</div>
+          <div>
+            <div style="color:white;font-weight:700;font-size:14px;margin-bottom:4px">גישה להפגנות אנטי-ישראליות בעיר</div>
+            <div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">המועצה המקומית מחליטה על מדיניות מתן היתרים ואכיפה בהפגנות. מפלגות מסוימות תמכו בהפגנות שכללו קריאות עוינות שהחרידו את הקהילה היהודית.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="background:rgba(34,197,94,.15);border-radius:8px;padding:8px 12px;font-size:18px;flex-shrink:0">✅</div>
+          <div>
+            <div style="color:white;font-weight:700;font-size:14px;margin-bottom:4px">תקצוב ביטחון מוסדות יהודיים</div>
+            <div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">בתי כנסת, בתי ספר ומרכזים קהילתיים זקוקים לאבטחה ממומנת. האם המועמד/ת תמך/ה בתקציבי ביטחון בפועל, לא רק בהצהרות?</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="background:rgba(34,197,94,.15);border-radius:8px;padding:8px 12px;font-size:18px;flex-shrink:0">🤝</div>
+          <div>
+            <div style="color:white;font-weight:700;font-size:14px;margin-bottom:4px">קשר ישיר עם הקהילה הישראלית</div>
+            <div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">האם הפוליטיקאי פגש נציגי קהילה? האם שמע אותנו? מועמדים שמכירים את הקהילה מקרוב לרוב מייצגים אותה טוב יותר.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TRAFFIC LIGHT -->
+    <h3 style="color:white;font-size:18px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px">🚦 דירוג המפלגות — Amstelveen</h3>
+
+    <div class="traffic-grid">
+      <div class="traffic-block">
+        <div class="traffic-head" style="background:#166534">
+          <div class="t-icon">🟢</div>
+          <div><div class="t-title">בחירה בטוחה — Safe Choice</div><div class="t-sub">עמדה עקבית ומוכחת לטובת הקהילה</div></div>
+        </div>
+        <div class="traffic-body">
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#16A34A"></div><div>
+            <div class="traffic-item-name">Actief voor Amstelveen (AvA) — מישל בקר</div>
+            <div class="traffic-item-desc">הצהרה חד-משמעית במצע 2026 להגנה על הקהילה היהודית. יוזמת חקיקה מוניציפלית נגד אנטישמיות. קשר ישיר עם מוסדות הקהילה.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#16A34A"></div><div>
+            <div class="traffic-item-name">VVD — הרברט ראט</div>
+            <div class="traffic-item-desc">הקצתה בפועל תקציב לאבטחת מוסדות יהודיים. ברמה הארצית — מתנגדת להצעות BDS ודורשת אחריות כלפי הקהילה. מפלגה ממשלתית עם כוח ביצוע.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#16A34A"></div><div>
+            <div class="traffic-item-name">Burgerbelangen Amstelveen (bbA)</div>
+            <div class="traffic-item-desc">מפלגה מקומית פרגמטית. תמכה בתקציבי ביטחון קהילתיים בהצבעות בפועל. מסרגלת פוליטיקה עירונית עם תמיכה יציבה בקהילות מיעוט.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#16A34A"></div><div>
+            <div class="traffic-item-name">CDA / ChristenUnie / SGP</div>
+            <div class="traffic-item-desc">היסטוריה של תמיכה בישראל ובמוסדות יהודיים מתוך עמדה ערכית. ברמה הארצית — מתנגדות באופן עקבי לחרמות ולעוינות כלפי ישראל.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#16A34A"></div><div>
+            <div class="traffic-item-name">Goed voor Amstelveen</div>
+            <div class="traffic-item-desc">מדגישה ביטחון אישי וביטחון קהילתי כצרכים שוויוניים לכל תושב. תומכת בכלים מעשיים לאכיפה ומימון.</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="traffic-block">
+        <div class="traffic-head" style="background:#92400E">
+          <div class="t-icon">🟡</div>
+          <div><div class="t-title">בחירה זהירה — Cautious</div><div class="t-sub">פעולה מקומית סבירה, אך עמדות לאומיות מדאיגות</div></div>
+        </div>
+        <div class="traffic-body">
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#D97706"></div><div>
+            <div class="traffic-item-name">D66 — פלור גורדון</div>
+            <div class="traffic-item-desc">ברמה המקומית תומכת בביטחון העיר ובשירותים לכלל התושבים. אך ברמה הארצית — D66 הצביעה בעד הצעות ביקורתיות כלפי ישראל ותמכה בהרחבת קליטת מהגרים ללא אבחנה מספקת.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#D97706"></div><div>
+            <div class="traffic-item-name">GroenLinks-PvdA — מרין ואן בלחווין</div>
+            <div class="traffic-item-desc">קואליציה שלטת ב-Amstelveen. בשטח — ללא עוינות ישירה. אך הצביעה בהצעות BDS, מזוהה עם סולידריות פרו-פלסטינית ברמה הארצית, ותמכה בהפגנות שנויות במחלוקת. בישיבת המועצה (יולי 2025) — פוצצה הצעה לאחר שהקואליציה הצביעה נגד הטלת חרם על ישראל, מעשה שנתפס כצעד חיובי אך לא מספיק.</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="traffic-block">
+        <div class="traffic-head" style="background:#991B1B">
+          <div class="t-icon">🔴</div>
+          <div><div class="t-title">נורות אזהרה — Red Flags</div><div class="t-sub">עמדות בעייתיות מבחינת ביטחון וסולידריות קהילתית</div></div>
+        </div>
+        <div class="traffic-body">
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#DC2626"></div><div>
+            <div class="traffic-item-name">SP — המפלגה הסוציאליסטית</div>
+            <div class="traffic-item-desc">תמיכה פעילה בחרם BDS ובקמפיינים נגד ישראל. הצבעות עוינות עקביות ברמה הארצית. נציגים שלה השתתפו בהפגנות עם קריאות שהוגדרו כאנטישמיות על ידי ארגוני מעקב.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#DC2626"></div><div>
+            <div class="traffic-item-name">FvD — Forum voor Democratie (מוניק סנפט)</div>
+            <div class="traffic-item-desc">רטוריקה קיצונית ותיאוריות קשר שזיהו ארגוני מעקב כבעלות אופי אנטישמי. גם אם לא מכוון — האקלים שנוצר מסוכן לקהילה.</div>
+          </div></div>
+          <div class="traffic-item"><div class="traffic-item-dot" style="background:#DC2626"></div><div>
+            <div class="traffic-item-name">PvdD, DENK, BIJ1</div>
+            <div class="traffic-item-desc">מפלגות אלו מזוהות עם עמדות אנטי-ישראליות חריפות ברמה הארצית. DENK ו-BIJ1 בפרט — רטוריקה המלבה את חוסר הביטחון של הקהילה ותמיכה פעילה בחרמות.</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div class="security-note" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.6);margin-top:24px">
+      <strong style="color:rgba(255,255,255,.9)">💬 מה אנחנו ממליצים?</strong>
+      לפני שמצביעים — בדקו את <strong style="color:white">ההצבעות בפועל</strong>, לא רק את ההצהרות. חפשו "BDS Amstelveen stemming" או "gemeenteraad antisemitisme" כדי לראות מה קרה באמת. ושיתוף המידע עם הקהילה — גם הוא חלק מהפעולה.
+      <br/><br/>
+      <span style="opacity:.7">📚 מקורות: דוח CIDI 2025/2026 · אישור תציבי במועצת Amstelveen (סעיף 17, יולי 2024) · הצהרות מצע רשמיות · ארכיון הצבעות gemeenteraad.nl</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>🇳🇱🇮🇱 הצבעה בהולנד — מדריך לקהילה הישראלית</strong><br/>
+  נבנה כשירות לציבור · אין אחריות פוליטית לתוכן
+  <div class="disclaimer">המידע באתר מיועד לצרכים אינפורמטיביים בלבד ואינו מייצג עמדה פוליטית. נתוני המפלגות מבוססים על בחירות 2022 ויעודכנו ל-2026. לאימות זכאותכם — פנו לעיריית מגוריכם.</div>
+</footer>
+
+<script>
+function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+function showTab(btn,paneId){
+  const hero=btn.closest('.city-hero');
+  hero.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  hero.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(paneId).classList.add('active');
+  if(paneId==='tp-compare') renderCompare();
+}
+
+const cdata={
+  d66:{n:'D66',housing:'הגדלת דיור ציבורי + הגנת שוכרים',transport:'חיבור טרם לרכבת תחתית — בעד',education:'השקעה בחינוך ציבורי + שפה',green:'מדיניות ירוקה חזקה, יעדי פחמן'},
+  vvd:{n:'VVD',housing:'שוק חופשי, פחות רגולציה',transport:'תשתיות כן, טרם — איטי יותר',education:'בעד חינוך פרטי ובינלאומי',green:'איזון סביבה-עסקים'},
+  pvda:{n:'PvdA',housing:'דיור ציבורי נרחב, הגבלת שכ"ד',transport:'תחבורה ציבורית זולה לכולם',education:'חינוך ציבורי ושוויוני',green:'קיימות + צדק חברתי'},
+  gl:{n:'GroenLinks',housing:'הגנת דיירים + דירות אקולוגיות',transport:'פחות מכוניות, יותר אופניים',education:'חינוך רב-תרבותי ושוויוני',green:'המדיניות הירוקה הרדיקלית ביותר'},
+  cda:{n:'CDA',housing:'שיתוף ציבורי-פרטי',transport:'תחבורה מאוזנת',education:'חופש חינוך כולל דתי',green:'איזון סביבה-צמיחה'},
+  aa:{n:'Amstelveen Anders',housing:'מיקוד בשכונות מקומיות',transport:'תחבורה פנים-עירונית + אופניים',education:'שמירה על בתי ספר מקומיים',green:'פארקים ירוקים, גינות שכונתיות'},
+};
+const ctopics=[{k:'housing',l:'🏠 דיור ושכירות'},{k:'transport',l:'🚌 תחבורה'},{k:'education',l:'🎓 חינוך'},{k:'green',l:'🌿 סביבה'}];
+function renderCompare(){
+  const sel=[...document.querySelectorAll('#tp-compare input:checked')].map(i=>i.value);
+  if(!sel.length){document.getElementById('compare-out').innerHTML='<p style="color:var(--muted);text-align:center;padding:20px">בחרו לפחות מפלגה אחת</p>';return;}
+  let h=`<table class="ctable"><thead><tr><th>נושא</th>`;
+  sel.forEach(s=>h+=`<th>${cdata[s].n}</th>`);
+  h+=`</tr></thead><tbody>`;
+  ctopics.forEach(t=>{h+=`<tr><td class="topic-col">${t.l}</td>`;sel.forEach(s=>h+=`<td>${cdata[s][t.k]}</td>`);h+=`</tr>`;});
+  h+=`</tbody></table>`;
+  document.getElementById('compare-out').innerHTML=h;
+}
+renderCompare();
+
+
+</script>
+</body>
+</html>
