@@ -96,10 +96,26 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 
 .event-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#475569;line-height:1.6}
 
+.countdown-wrap{direction:ltr;unicode-bidi:isolate;display:inline-flex;align-items:center;gap:4px}
 .countdown-unit{text-align:center;min-width:60px}
 .countdown-num{font-family:'Heebo',sans-serif;font-weight:800;font-size:28px;line-height:1;color:#fff}
 .countdown-label{font-size:11px;color:rgba(255,255,255,.55);margin-top:4px;font-weight:500}
 .countdown-sep{font-size:24px;color:rgba(255,255,255,.3);font-weight:300;padding-top:2px}
+
+.platform-table{width:100%;border-collapse:collapse;font-size:12.5px;direction:ltr;unicode-bidi:isolate}
+.platform-table th{background:#0f2050;color:#fff;padding:8px 10px;font-weight:600;text-align:center;font-size:11px;position:sticky;top:0;z-index:1;white-space:nowrap}
+.platform-table th:first-child{text-align:right;direction:rtl;min-width:80px}
+.platform-table td{padding:7px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle;text-align:center;line-height:1.4;color:#475569;font-size:11.5px}
+.platform-table td:first-child{text-align:right;direction:rtl;font-weight:700;color:#0f172a;white-space:nowrap;font-size:12px}
+.platform-table tbody tr:hover{background:#f8fafc}
+.platform-table .cell-green{background:#f0fdf4;color:#15803d;font-weight:600}
+.platform-table .cell-yellow{background:#fefce8;color:#854d0e;font-weight:600}
+.platform-table .cell-red{background:#fef2f2;color:#b91c1c;font-weight:600}
+
+.volmacht-card{background:linear-gradient(135deg,#f0f5ff,#fff);border:1.5px solid #bfdbfe;border-radius:14px;padding:24px}
+.volmacht-step{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #e8f0fb}
+.volmacht-step:last-child{border-bottom:none}
+.volmacht-num{width:28px;height:28px;border-radius:50%;background:#0f2050;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
 
 .nat-table{width:100%;border-collapse:collapse;font-size:13.5px}
 .nat-table th{background:#0f2050;color:#fff;padding:10px 14px;font-weight:600;text-align:right;font-size:12.5px;position:sticky;top:0;z-index:1}
@@ -112,6 +128,18 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
   .party-table td,.party-table th{padding:10px 10px}
   .countdown-num{font-size:22px}
   .countdown-unit{min-width:48px}
+  .platform-table{font-size:11px}
+  .platform-table th{padding:6px 5px;font-size:10px}
+  .platform-table td{padding:5px 5px;font-size:10px}
+  .nat-table{font-size:12.5px}
+  .nat-table th,.nat-table td{padding:8px 8px}
+  .qlink-card{padding:18px}
+  .section-chip{font-size:10.5px}
+}
+@media(max-width:360px){
+  .countdown-num{font-size:18px}
+  .countdown-unit{min-width:38px}
+  .countdown-sep{font-size:18px}
 }
 </style>
 </head>
@@ -169,7 +197,7 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
     <!-- Countdown -->
     <div class="mt-14 p-5 rounded-2xl inline-flex items-center gap-2 flex-wrap" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)">
       <div class="text-[13px] font-semibold ml-4" style="color:rgba(255,255,255,.6)">⏱️ ספירה לאחור ליום הבחירות:</div>
-      <div id="countdown" class="flex items-center gap-1">
+      <div id="countdown" class="countdown-wrap">
         <div class="countdown-unit"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">ימים</div></div>
         <span class="countdown-sep">:</span>
         <div class="countdown-unit"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">שעות</div></div>
@@ -310,7 +338,7 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 <!-- QUICK LINKS -->
 <section class="pb-12 px-5">
   <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-3 gap-5 mb-5">
       <div class="qlink-card">
         <div class="qlink-icon" style="background:#e8f0fb">🗳️</div>
         <h3 class="font-bold text-[16px] text-navy mb-2">מה להביא לקלפי?</h3>
@@ -339,6 +367,54 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
         <div class="inline-flex items-center gap-2 text-[13.5px] font-bold" style="color:#15803d">stemwijzer.nl ←</div>
       </a>
     </div>
+
+    <!-- PROXY VOTING -->
+    <div class="volmacht-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-[24px]">🤝</span>
+        <div>
+          <h3 class="font-bold text-[18px] text-navy">הצבעה בייפוי כוח (Volmacht)</h3>
+          <p class="text-slate-500 text-[13px]">לא יכולים להגיע לקלפי? מישהו יכול להצביע בשמכם</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-bold text-[14px] text-navy mb-3">🔹 אפשרות 1: חתימה על ה-Stempas (פשוט)</h4>
+          <div class="flex flex-col">
+            <div class="volmacht-step">
+              <div class="volmacht-num">1</div>
+              <div class="text-[13.5px] text-slate-600 leading-relaxed"><strong>חתמו על גב ה-stempas</strong> — מלאו את שם הנציג/ה שלכם וחתמו בגב כרטיס ההצבעה.</div>
+            </div>
+            <div class="volmacht-step">
+              <div class="volmacht-num">2</div>
+              <div class="text-[13.5px] text-slate-600 leading-relaxed"><strong>מסרו ת.ז. + stempas לנציג</strong> — הנציג/ה צריך/ה לקבל את שני המסמכים.</div>
+            </div>
+            <div class="volmacht-step">
+              <div class="volmacht-num">3</div>
+              <div class="text-[13.5px] text-slate-600 leading-relaxed"><strong>הנציג/ה מצביע/ה בקלפי</strong> — מצביע/ה עבורכם בו-זמנית עם ההצבעה שלו/ה.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-[14px] text-navy mb-3">🔹 אפשרות 2: בקשה רשמית מהעירייה</h4>
+          <div class="flex flex-col">
+            <div class="volmacht-step">
+              <div class="volmacht-num">1</div>
+              <div class="text-[13.5px] text-slate-600 leading-relaxed"><strong>הגישו בקשה בכתב</strong> לעירייה לקבלת volmachtbewijs (אישור ייפוי כוח).</div>
+            </div>
+            <div class="volmacht-step">
+              <div class="volmacht-num">2</div>
+              <div class="text-[13.5px] text-slate-600 leading-relaxed"><strong>דדליין: 13 במרץ (17:00)</strong> — יש להגיש את הבקשה לפחות 5 ימים לפני הבחירות.</div>
+            </div>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200">
+            <p class="text-[12.5px] text-amber-800 leading-relaxed">
+              <strong>⚠️ תנאים:</strong> הנציג/ה חייב/ת להיות רשום/ה <strong>באותה עיר</strong>. כל נציג/ה רשאי/ת להצביע בייפוי כוח עבור <strong>מקסימום 2 אנשים</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -350,32 +426,64 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
     <h2 class="font-display font-bold text-[26px] md:text-[32px] text-navy mt-1 mb-2">עמדות מפלגות ארציות</h2>
     <p class="text-slate-500 text-[14.5px] mb-6">דירוג לפי ניתוח CIDI, הצבעות בפרלמנט ומצעים. אף ארגון יהודי לא ממליץ רשמית על מפלגה.</p>
 
+    <!-- Coalition info banner -->
+    <div class="flex flex-wrap gap-3 mb-5">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12.5px] font-semibold" style="background:#e8f0fb;color:#0f2050">
+        <span>🏛️</span> <strong>קואליציה (150 מושבים):</strong>&nbsp;PVV (37) + VVD (24) + BBB (7) + NSC (20) = 88 מושבים
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12.5px] font-medium" style="background:#f1f5f9;color:#64748b">
+        <span>⚠️</span> NSC עזבה את הקואליציה · אופוזיציה: 62 מושבים
+      </div>
+    </div>
+
     <div class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100">
       <div class="overflow-x-auto">
         <table class="nat-table">
-          <thead><tr><th style="min-width:120px">מפלגה</th><th style="min-width:90px">דירוג</th><th style="min-width:80px">IHRA</th><th style="min-width:80px">BDS</th><th>תיאור קצר</th></tr></thead>
+          <thead><tr><th style="min-width:110px">מפלגה</th><th class="hide-mobile" style="width:60px">מושבים</th><th class="hide-mobile" style="width:75px">סטטוס</th><th style="min-width:85px">דירוג</th><th style="min-width:70px">IHRA</th><th style="min-width:70px">BDS</th><th>תיאור קצר</th></tr></thead>
           <tbody>
-            <tr><td class="font-bold">SGP</td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>הוביל אימוץ</td><td>מתנגד בתוקף</td><td class="text-[13px]">פרו-ישראלי ביותר; מחויבות אמונית</td></tr>
-            <tr><td class="font-bold">ChristenUnie</td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק בביטחון יהודי; שותף לחוק אנטישמיות</td></tr>
-            <tr><td class="font-bold">PVV</td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך בתוקף</td><td>מתנגד בתוקף</td><td class="text-[13px]">קולני ביותר; חשש ממסגור אנטי-אסלאמי</td></tr>
-            <tr><td class="font-bold">JA21</td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">הצבעה פרו-ישראלית עקבית</td></tr>
-            <tr><td class="font-bold">BBB</td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">מעורבות מעשית; עמדה חזקה נגד אנטישמיות</td></tr>
-            <tr><td class="font-bold">VVD</td><td><span class="badge badge-green">🟢/🟡</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק על אנטישמיות פנימית; עמדה כלפי ישראל משתנה</td></tr>
-            <tr><td class="font-bold">CDA</td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>מעורב</td><td class="text-[13px]">היסטורית פרו-ישראל; כעת נפתח למדינה פלסטינית</td></tr>
-            <tr><td class="font-bold">NSC</td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>נגד BDS מלא</td><td class="text-[13px]">מתון, עקרוני; עזב ממשלה בשל חילוקי דעות על ישראל</td></tr>
-            <tr><td class="font-bold">Volt</td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>לא ברור</td><td>נגד BDS מלא</td><td class="text-[13px]">פרוגרסיבי-אירופי; פחות קולני בנושאים יהודיים</td></tr>
-            <tr><td class="font-bold">FvD</td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>עמום</td><td>מתנגד רשמית</td><td class="text-[13px]">לא עקבי; בעיות אנטישמיות פנימיות</td></tr>
-            <tr><td class="font-bold">D66</td><td><span class="badge badge-yellow">🟡/🔴</span></td><td>הצביע נגד</td><td>תומך בסנקציות</td><td class="text-[13px]">משתמש בתווית "רצח עם"; סקפטי כלפי IHRA</td></tr>
-            <tr><td class="font-bold">PvdA/GL</td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>עמום</td><td>תומך בסנקציות</td><td class="text-[13px]">מסגור "רצח עם"; אמברגו נשק; לא עקבי בהגנה יהודית</td></tr>
-            <tr><td class="font-bold">SP</td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך</td><td class="text-[13px]">פרו-BDS; נגד IHRA</td></tr>
-            <tr><td class="font-bold">PvdD</td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד מפורשות</td><td>תומך בחרם מלא</td><td class="text-[13px]">נגד IHRA; טוען "יותר מדי" תשומת לב לאנטישמיות</td></tr>
-            <tr><td class="font-bold">DENK</td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך בחרם</td><td class="text-[13px]">מתקיף CIDI; רטוריקה אנטישמית; סירב לגנות</td></tr>
-            <tr><td class="font-bold">BIJ1</td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד</td><td>BDS מלא</td><td class="text-[13px]">עוין ביותר; רוצה לחקור CIDI</td></tr>
+            <tr><td class="font-bold">PVV</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">37</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך בתוקף</td><td>מתנגד בתוקף</td><td class="text-[13px]">קולני ביותר פרו-ישראל; מפלגה גדולה ביותר</td></tr>
+            <tr><td class="font-bold">VVD</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">24</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢/🟡</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק על אנטישמיות; עמדה כלפי ישראל משתנה</td></tr>
+            <tr><td class="font-bold">BBB</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">7</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">מעורבות מעשית; עמדה חזקה נגד אנטישמיות</td></tr>
+            <tr style="border-bottom:2px solid #e8f0fb"><td class="font-bold">NSC</td><td class="hide-mobile text-center font-bold" style="color:#854d0e">20</td><td class="hide-mobile"><span class="badge" style="background:#fef9c3;color:#854d0e;font-size:10.5px">עזבה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>נגד BDS מלא</td><td class="text-[13px]">מתון, עקרוני; עזב ממשלה בשל חילוקי דעות על ישראל</td></tr>
+            <tr><td class="font-bold">PvdA/GL</td><td class="hide-mobile text-center">25</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>עמום</td><td>תומך בסנקציות</td><td class="text-[13px]">מסגור "רצח עם"; אמברגו נשק; לא עקבי בהגנה יהודית</td></tr>
+            <tr><td class="font-bold">D66</td><td class="hide-mobile text-center">9</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡/🔴</span></td><td>הצביע נגד</td><td>תומך בסנקציות</td><td class="text-[13px]">משתמש בתווית "רצח עם"; סקפטי כלפי IHRA</td></tr>
+            <tr><td class="font-bold">SGP</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>הוביל אימוץ</td><td>מתנגד בתוקף</td><td class="text-[13px]">פרו-ישראלי ביותר; מחויבות אמונית</td></tr>
+            <tr><td class="font-bold">ChristenUnie</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק בביטחון יהודי; שותף לחוק אנטישמיות</td></tr>
+            <tr><td class="font-bold">JA21</td><td class="hide-mobile text-center">1</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">הצבעה פרו-ישראלית עקבית</td></tr>
+            <tr><td class="font-bold">CDA</td><td class="hide-mobile text-center">5</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>מעורב</td><td class="text-[13px]">היסטורית פרו-ישראל; כעת נפתח למדינה פלסטינית</td></tr>
+            <tr><td class="font-bold">Volt</td><td class="hide-mobile text-center">2</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>לא ברור</td><td>נגד BDS מלא</td><td class="text-[13px]">פרוגרסיבי-אירופי; פחות קולני בנושאים יהודיים</td></tr>
+            <tr><td class="font-bold">SP</td><td class="hide-mobile text-center">5</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך</td><td class="text-[13px]">פרו-BDS; נגד IHRA</td></tr>
+            <tr><td class="font-bold">FvD</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>עמום</td><td>מתנגד רשמית</td><td class="text-[13px]">לא עקבי; בעיות אנטישמיות פנימיות</td></tr>
+            <tr><td class="font-bold">PvdD</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד מפורשות</td><td>תומך בחרם מלא</td><td class="text-[13px]">נגד IHRA; טוען "יותר מדי" תשומת לב לאנטישמיות</td></tr>
+            <tr><td class="font-bold">DENK</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך בחרם</td><td class="text-[13px]">מתקיף CIDI; רטוריקה אנטישמית; סירב לגנות</td></tr>
+            <tr><td class="font-bold">BIJ1</td><td class="hide-mobile text-center">1</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד</td><td>BDS מלא</td><td class="text-[13px]">עוין ביותר; רוצה לחקור CIDI</td></tr>
           </tbody>
         </table>
       </div>
     </div>
-    <p class="text-[12px] text-slate-400 mt-3">מקור: ניתוח CIDI, הצבעות הכנסת השנייה, תוכניות מפלגתיות. עמדות מקומיות עשויות להיות שונות — בדקו לפי עיר למטה.</p>
+    <p class="text-[12px] text-slate-400 mt-3">מקור: ניתוח CIDI, הצבעות הכנסת השנייה (Tweede Kamer — 150 מושבים), תוכניות מפלגתיות. עמדות מקומיות עשויות להיות שונות — בדקו לפי עיר למטה.</p>
+
+    <!-- PLATFORM SUMMARIES -->
+    <div class="mt-10">
+      <div class="section-chip">📋 מצעים לפי נושא</div>
+      <h3 class="font-display font-bold text-[22px] md:text-[26px] text-navy mt-1 mb-2">תמצית מצעים — 7 נושאי מפתח</h3>
+      <p class="text-slate-500 text-[13.5px] mb-5">סיכום עמדות המפלגות הארציות בנושאים מרכזיים. לחצו על הנושא לצפייה.</p>
+
+      <!-- Platform tabs -->
+      <div class="flex flex-wrap gap-2 mb-4" id="platform-tabs">
+        <button class="city-btn active" onclick="showPlatform('education',this)">🎓 חינוך</button>
+        <button class="city-btn" onclick="showPlatform('immigration',this)">🛂 הגירה</button>
+        <button class="city-btn" onclick="showPlatform('housing',this)">🏠 דיור</button>
+        <button class="city-btn" onclick="showPlatform('economy',this)">💼 כלכלה</button>
+        <button class="city-btn" onclick="showPlatform('environment',this)">🌱 סביבה</button>
+        <button class="city-btn" onclick="showPlatform('transport',this)">🚊 תחבורה</button>
+        <button class="city-btn" onclick="showPlatform('israel',this)">🇮🇱 עמדה על ישראל</button>
+      </div>
+
+      <div id="platform-content" class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100">
+        <!-- Filled by JS -->
+      </div>
+    </div>
   </div>
 </section>
 
@@ -474,6 +582,182 @@ function updateCountdown(){
   document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
 }
 updateCountdown();setInterval(updateCountdown,1000);
+
+/* ── PLATFORM DATA ── */
+const PLATFORMS = {
+  education: {
+    he:'חינוך',emoji:'🎓',
+    data:[
+      {party:'PVV',text:'פחות בינלאומיות, דגש על הולנדית',light:'green'},
+      {party:'VVD',text:'איכות, מריטוקרטיה, פחות אידיאולוגיה',light:'green'},
+      {party:'BBB',text:'מיומנויות מעשיות, הערכת MBO',light:'green'},
+      {party:'NSC',text:'בחזרה לבסיס, שיפור איכות',light:'yellow'},
+      {party:'CDA',text:'איכות, הזדמנויות שוות',light:'yellow'},
+      {party:'D66',text:'הזדמנויות שוות, חדשנות, basisbeurs',light:'yellow'},
+      {party:'ChristenUnie',text:'מבוסס ערכים, מניעת אנטישמיות',light:'green'},
+      {party:'SGP',text:'ערכים נוצריים, חינוך שואה חובה',light:'green'},
+      {party:'JA21',text:'איכות, פחות אידיאולוגיה בבתי ספר',light:'green'},
+      {party:'Volt',text:'ממד אירופי, מכיל, חדשני',light:'yellow'},
+      {party:'PvdA/GL',text:'הזדמנויות שוות, השקעה, לימודים זולים',light:'red'},
+      {party:'SP',text:'חינוך חינמי ונגיש, כיתות קטנות',light:'red'},
+      {party:'PvdD',text:'דגש קיימות, חינוך רווחת בע"ח',light:'red'},
+      {party:'DENK',text:'הזדמנויות שוות, נגד אפליה, מגוון',light:'red'},
+      {party:'FvD',text:'תוכנית קלאסית, בחירת הורים',light:'yellow'},
+      {party:'BIJ1',text:'דה-קולוניאלי, אנטי-גזעני, מכיל',light:'red'},
+    ]
+  },
+  immigration: {
+    he:'הגירה ופליטים',emoji:'🛂',
+    data:[
+      {party:'PVV',text:'הגבלות חמורות ביותר, שיפוץ מערכת מקלט',light:'green'},
+      {party:'VVD',text:'מגבלות נוקשות, מונע שוק עבודה',light:'green'},
+      {party:'BBB',text:'מבוקר, דגש על אינטגרציה',light:'green'},
+      {party:'NSC',text:'נחרץ אך הומני, מיקוד אינטגרציה',light:'yellow'},
+      {party:'CDA',text:'אינטגרציה מסודרת כעדיפות',light:'yellow'},
+      {party:'D66',text:'גישה אירופית הומנית סולידרית',light:'yellow'},
+      {party:'ChristenUnie',text:'הומני מתון אך נחרץ',light:'green'},
+      {party:'SGP',text:'מגביל עם דרישות אינטגרציה',light:'green'},
+      {party:'JA21',text:'הגירת עבודה סלקטיבית מבוקרת',light:'green'},
+      {party:'Volt',text:'סולידריות אירופית, גישה הומנית',light:'yellow'},
+      {party:'PvdA/GL',text:'סולידריות הומנית, תמיכת אינטגרציה',light:'red'},
+      {party:'SP',text:'מבוקר, הגנת זכויות עובדים',light:'red'},
+      {party:'PvdD',text:'גישה הומנית, הכרה בפליטי אקלים',light:'red'},
+      {party:'DENK',text:'פתוח, נגד אפליה, איחוד משפחות',light:'red'},
+      {party:'FvD',text:'הגירה כמעט אפסית, גבולות נוקשים',light:'yellow'},
+      {party:'BIJ1',text:'גבולות פתוחים, נגד גירוש',light:'red'},
+    ]
+  },
+  housing: {
+    he:'דיור ובנייה',emoji:'🏠',
+    data:[
+      {party:'PVV',text:'100K דירות/שנה, פחות רגולציה',light:'green'},
+      {party:'VVD',text:'מוכוון שוק, היתרים מהירים, בנייה',light:'green'},
+      {party:'BBB',text:'תוכנית בנייה מסיבית, פחות רגולציה',light:'green'},
+      {party:'NSC',text:'100K/שנה, 30% חברתי, נגישות',light:'yellow'},
+      {party:'CDA',text:'מוכוון קהילה, מגזר ביניים נגיש',light:'yellow'},
+      {party:'D66',text:'10 ערים חדשות, 30% חברתי מינימום',light:'yellow'},
+      {party:'ChristenUnie',text:'דיור נגיש, בנייה מוכוונת קהילה',light:'green'},
+      {party:'SGP',text:'בנייה מתונה, דיור משפחתי',light:'green'},
+      {party:'JA21',text:'בנייה מהירה, 0.5% תמ"ג השקעה',light:'green'},
+      {party:'Volt',text:'שיתוף פעולה אירופי, בנייה בת-קיימא',light:'yellow'},
+      {party:'PvdA/GL',text:'40% חברתי, רגולציית שכירות, 100K/שנה',light:'red'},
+      {party:'SP',text:'עדיפות דיור ציבורי, פיקוח שכירות',light:'red'},
+      {party:'PvdD',text:'בנייה בת-קיימא, פחות קרקע חקלאית',light:'red'},
+      {party:'DENK',text:'הרחבת דיור חברתי, נגד אפליה',light:'red'},
+      {party:'FvD',text:'100K/שנה, ביטול דרישות קיימות',light:'yellow'},
+      {party:'BIJ1',text:'דיור ציבורי, נגד ג\'נטריפיקציה',light:'red'},
+    ]
+  },
+  economy: {
+    he:'כלכלה',emoji:'💼',
+    data:[
+      {party:'PVV',text:'מסים נמוכים, פחות התערבות EU',light:'green'},
+      {party:'VVD',text:'שוק חופשי, מסים נמוכים, יזמות',light:'green'},
+      {party:'BBB',text:'חקלאות, צמיחת SME, תמיכה',light:'green'},
+      {party:'NSC',text:'מעמד ביניים, כספים ציבוריים בריאים',light:'yellow'},
+      {party:'CDA',text:'כלכלת שוק חברתית, תמיכת SME',light:'yellow'},
+      {party:'D66',text:'כלכלת ידע, צמיחה ירוקה, חדשנות',light:'yellow'},
+      {party:'ChristenUnie',text:'כלכלת שוק חברתית, סולידריות',light:'green'},
+      {party:'SGP',text:'מדיניות פיסקלית איתנה, SME',light:'green'},
+      {party:'JA21',text:'שוק חופשי, פחות רגולציה',light:'green'},
+      {party:'Volt',text:'צמיחה ירוקה, אינטגרציה אירופית',light:'yellow'},
+      {party:'PvdA/GL',text:'חלוקה הוגנת, זכויות עובדים, ירוק',light:'red'},
+      {party:'SP',text:'הלאמה, עובדים ראשון, נגד תאגידים',light:'red'},
+      {party:'PvdD',text:'צמיחה-שלילית, קיימות אקולוגית',light:'red'},
+      {party:'DENK',text:'נגד אפליה, הזדמנויות שוות בעבודה',light:'red'},
+      {party:'FvD',text:'דה-רגולציה, מסים נמוכים, פחות EU',light:'yellow'},
+      {party:'BIJ1',text:'אנטי-קפיטליסטי, פיצויים, חלוקה מחדש',light:'red'},
+    ]
+  },
+  environment: {
+    he:'סביבה ואקלים',emoji:'🌱',
+    data:[
+      {party:'PVV',text:'נגד מנדטים אקלימיים, גישה מעשית',light:'green'},
+      {party:'VVD',text:'חדשנות טכנולוגית על פני הגבלות',light:'green'},
+      {party:'BBB',text:'קיימות מעשית ידידותית-לחקלאים',light:'green'},
+      {party:'NSC',text:'מעבר אחראי, גישה פרגמטית',light:'yellow'},
+      {party:'CDA',text:'קיימות מאוזנת, שמירה',light:'yellow'},
+      {party:'D66',text:'אקלים שאפתני, כלכלה מעגלית',light:'yellow'},
+      {party:'ChristenUnie',text:'שמירת הבריאה, השקעה ירוקה',light:'green'},
+      {party:'SGP',text:'שמירה, אמצעי קיימות מעשיים',light:'green'},
+      {party:'JA21',text:'מונע טכנולוגיה לא מנדטים אידיאולוגיים',light:'green'},
+      {party:'Volt',text:'תקני אקלים שאפתניים של EU',light:'yellow'},
+      {party:'PvdA/GL',text:'אג\'נדת אקלים שאפתנית ביותר, שינוי מערכתי',light:'red'},
+      {party:'SP',text:'מעבר צודק, אחריות תעשייתית',light:'red'},
+      {party:'PvdD',text:'רדיקלי ביותר — אקלים ורווחת בע"ח',light:'red'},
+      {party:'DENK',text:'צדק סביבתי, מעבר שוויוני',light:'red'},
+      {party:'FvD',text:'נגד מדיניות אקלים, ללא מנדטים',light:'yellow'},
+      {party:'BIJ1',text:'צדק אקלימי, אקולוגיה דה-קולוניאלית',light:'red'},
+    ]
+  },
+  transport: {
+    he:'תחבורה',emoji:'🚊',
+    data:[
+      {party:'PVV',text:'יותר כבישים, פחות מנדטים יקרים',light:'green'},
+      {party:'VVD',text:'השקעת תשתיות, יעילות כבישים',light:'green'},
+      {party:'BBB',text:'קישוריות כפרית, השקעת תשתיות',light:'green'},
+      {party:'NSC',text:'תחזוקת תשתיות, נגישות',light:'yellow'},
+      {party:'CDA',text:'קישוריות, תשתית מעשית',light:'yellow'},
+      {party:'D66',text:'אופניים ורכבת בת-קיימא בעדיפות',light:'yellow'},
+      {party:'ChristenUnie',text:'ניידות בת-קיימא, עדיפות נגישות',light:'green'},
+      {party:'SGP',text:'השקעת תשתיות, נגישות כפרית',light:'green'},
+      {party:'JA21',text:'השקעת תשתיות, ניידות מעשית',light:'green'},
+      {party:'Volt',text:'קישוריות אירופית, ניידות בת-קיימא',light:'yellow'},
+      {party:'PvdA/GL',text:'עדיפות תח"צ ואופניים',light:'red'},
+      {party:'SP',text:'תח"צ נגישה וזולה',light:'red'},
+      {party:'PvdD',text:'נגד תעופה, עדיפות אופניים',light:'red'},
+      {party:'DENK',text:'נגישות ונגישות-מחירית של תח"צ',light:'red'},
+      {party:'FvD',text:'יותר כבישים, פחות מגבלות אקלים',light:'yellow'},
+      {party:'BIJ1',text:'תח"צ חינמית, נגישות',light:'red'},
+    ]
+  },
+  israel: {
+    he:'עמדה על ישראל',emoji:'🇮🇱',
+    data:[
+      {party:'PVV',text:'פרו-ישראלי ביותר, חמאס=נאצים',light:'green'},
+      {party:'VVD',text:'חזק נגד אנטישמיות, עמדת ישראל משתנה',light:'green'},
+      {party:'BBB',text:'מעורבות מעשית, נגד אנטישמיות',light:'green'},
+      {party:'NSC',text:'עקרוני-מתון, עזב ממשלה בנושא ישראל',light:'yellow'},
+      {party:'CDA',text:'היסטורית פרו-ישראל, נפתח למדינה פלסטינית',light:'yellow'},
+      {party:'D66',text:'תווית "רצח עם", סנקציות, סקפטי IHRA',light:'red'},
+      {party:'ChristenUnie',text:'פרו-ישראלי, ביטחון יהודי, חוק אנטישמיות',light:'green'},
+      {party:'SGP',text:'פרו-ישראלי ביותר, הוביל אימוץ IHRA',light:'green'},
+      {party:'JA21',text:'הצבעה פרו-ישראלית עקבית',light:'green'},
+      {party:'Volt',text:'פחות קולני, לא ברור על IHRA',light:'yellow'},
+      {party:'PvdA/GL',text:'"רצח עם", אמברגו נשק, תומך סנקציות',light:'red'},
+      {party:'SP',text:'פרו-BDS, נגד IHRA, "רצח עם"',light:'red'},
+      {party:'PvdD',text:'נגד IHRA, חרם מלא, "יותר מדי" אנטישמיות',light:'red'},
+      {party:'DENK',text:'תוקף CIDI, רטוריקה אנטישמית, חרם',light:'red'},
+      {party:'FvD',text:'טוען פרו-ישראל, בעיות אנטישמיות פנימיות',light:'yellow'},
+      {party:'BIJ1',text:'עוין ביותר, BDS מלא, לחקור CIDI',light:'red'},
+    ]
+  }
+};
+
+function showPlatform(key,btn){
+  document.querySelectorAll('#platform-tabs .city-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const p=PLATFORMS[key];if(!p)return;
+  const rows=p.data.map(d=>{
+    const cls=d.light==='green'?'cell-green':d.light==='red'?'cell-red':'cell-yellow';
+    const dot={green:'🟢',yellow:'🟡',red:'🔴'}[d.light]||'🟡';
+    return `<tr><td>${d.party}</td><td class="${cls}">${dot} ${d.text}</td></tr>`;
+  }).join('');
+  document.getElementById('platform-content').innerHTML=`
+    <div class="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+      <span class="text-[18px]">${p.emoji}</span>
+      <h4 class="font-bold text-[15px] text-navy">${p.he}</h4>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="nat-table" style="font-size:13px">
+        <thead><tr><th style="min-width:100px">מפלגה</th><th>עמדה</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+
+/* init platform on load */
+document.addEventListener('DOMContentLoaded',()=>{showPlatform('education',document.querySelector('#platform-tabs .city-btn'))});
 
 /* ── CITY DATA ── */
 const CITIES = {
