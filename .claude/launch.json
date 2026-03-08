@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "designs",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "require('http').createServer((req,res)=>{const fs=require('fs'),path=require('path');let f=path.join('.',req.url==='/'?'/index.html':req.url);try{res.writeHead(200);res.end(fs.readFileSync(f))}catch(e){res.writeHead(404);res.end()}}).listen(4200)"],
+      "port": 4200
+    }
+  ]
+}
