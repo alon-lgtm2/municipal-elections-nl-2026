@@ -121,6 +121,19 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 .nat-table th{background:#0f2050;color:#fff;padding:10px 14px;font-weight:600;text-align:right;font-size:12.5px;position:sticky;top:0;z-index:1}
 .nat-table td{padding:10px 14px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
 .nat-table tbody tr:hover{background:#f8fafc}
+.nat-table tbody tr.expandable-row{cursor:pointer;transition:background .15s}
+.nat-table tbody tr.expandable-row:hover{background:#f0f5ff}
+.party-table tbody tr.expandable-row{cursor:pointer;transition:background .15s}
+.party-table tbody tr.expandable-row:hover{background:#f0f5ff}
+.expand-panel{animation:fadeUp .25s cubic-bezier(.16,1,.3,1) both}
+.expand-arrow{display:inline-block;font-size:10px;transition:transform .2s;color:#94a3b8;margin-right:4px}
+.expand-arrow.open{transform:rotate(180deg)}
+.compare-cb{width:16px;height:16px;accent-color:#e8650a;cursor:pointer}
+.timeline-item{position:relative;padding-right:28px;padding-bottom:16px;border-right:2px solid #e2e8f0}
+.timeline-item:last-child{border-right-color:transparent;padding-bottom:0}
+.timeline-dot{position:absolute;right:-7px;top:2px;width:12px;height:12px;border-radius:50%;border:2px solid #fff}
+.tier-card{border-radius:12px;padding:16px;cursor:pointer}
+.tier-card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
 
 @media(max-width:640px){
   .hide-mobile{display:none}
@@ -156,8 +169,10 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
       </div>
     </div>
     <div class="flex items-center gap-1">
+      <a href="#why-vote" class="nav-link hide-mobile">למה להצביע</a>
       <a href="#eligibility" class="nav-link hide-mobile">זכאות</a>
       <a href="#national" class="nav-link hide-mobile">מפלגות</a>
+      <a href="#platform-section" class="nav-link hide-mobile">מצעים</a>
       <a href="#cities" class="nav-link hide-mobile">ערים</a>
       <a href="#cities" class="mr-2 px-4 py-2 rounded-lg text-white font-bold text-[13.5px] transition hover:opacity-90" style="background:#e8650a">📍 בחר עיר</a>
     </div>
@@ -167,7 +182,7 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 <!-- HERO -->
 <section class="relative overflow-hidden dot-grid text-white" style="background:linear-gradient(135deg,#0a1a40 0%,#0f2050 45%,#1a3268 100%)">
   <div class="absolute inset-0" style="background:radial-gradient(ellipse 80% 60% at 60% 50%,rgba(30,58,110,.7) 0%,transparent 70%)"></div>
-  <div class="relative max-w-6xl mx-auto px-5 py-20 md:py-24">
+  <div class="relative max-w-6xl mx-auto px-5 py-14 md:py-18">
     <div class="inline-flex items-center gap-2 mb-7 px-4 py-1.5 rounded-full text-[12.5px] font-semibold" style="background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85)">
       <span class="live-dot"></span>
       בחירות מוניציפליות · 18 במרץ 2026
@@ -234,8 +249,41 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 </section>
 
 
+<!-- WHY VOTE -->
+<section id="why-vote" class="py-10 px-5 bg-white" style="border-top:1px solid #e8f0fb">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-chip">💡 למה להצביע?</div>
+    <h2 class="font-display font-bold text-[24px] md:text-[30px] text-navy mt-1 mb-2">הקול שלכם משנה — יותר ממה שאתם חושבים</h2>
+    <p class="text-slate-500 text-[14px] mb-6">השלטון המקומי מחליט על חיי היום-יום שלכם. הנה למה לא כדאי לוותר.</p>
+    <div class="grid md:grid-cols-3 gap-4 mb-5">
+      <div class="bg-navy-50 rounded-xl p-5 border border-navy-100">
+        <div class="text-[28px] mb-2">🏫</div>
+        <h3 class="font-bold text-[15px] text-navy mb-1.5">השפעה ישירה על החיים</h3>
+        <p class="text-[13px] text-slate-600 leading-relaxed">העירייה קובעת ארנונה, תחזוקת בתי ספר, תחבורה, היתרי בנייה, ותקציבי ביטחון — כולל ביטחון מוסדות יהודיים. באמסטרדם, הקהילה משלמת €800K-1M בשנה מכספה על ביטחון.</p>
+      </div>
+      <div class="rounded-xl p-5 border border-red-200" style="background:#fff5f5">
+        <div class="text-[28px] mb-2">⚖️</div>
+        <h3 class="font-bold text-[15px] text-red-800 mb-1.5">הצבעות שעברו בהפרש מינימלי</h3>
+        <p class="text-[13px] text-slate-600 leading-relaxed">באוטרכט — חרם עבר 32 מ-44. באמסטרדם — איסור ספורט ישראלי 42-9. באיינדהובן — הצעת פלסטין 25-16. בדן האג — IHRA הוחלפה ב-JDA. מי שיושב שם קובע.</p>
+      </div>
+      <div class="rounded-xl p-5 border" style="background:#fef0e6;border-color:#fdba74">
+        <div class="text-[28px] mb-2">🤝</div>
+        <h3 class="font-bold text-[15px] text-brand-dark mb-1.5">עוצמה בקהילה</h3>
+        <p class="text-[13px] text-slate-600 leading-relaxed">~20,000 ישראלים בהולנד. באמסטלוון — 8,756 לא-הולנדים זכאים. אם הקהילה מצביעה כבלוק, זה מושב אחד או יותר. בערים קטנות — כל קול שוקל יותר.</p>
+      </div>
+    </div>
+    <div class="bg-navy rounded-xl p-5 text-white flex items-start gap-4">
+      <span class="text-[24px] flex-shrink-0">📢</span>
+      <div>
+        <h3 class="font-bold text-[16px] mb-1">הקול שלכם יכול היה לשנות את התוצאה</h3>
+        <p class="text-[13.5px] leading-relaxed" style="color:rgba(255,255,255,.7)">מועצות עירוניות מחליטות ברוב רגיל. כשהצעת חרם עוברת ב-73% — הבעיה היא לא שאין תמיכה, אלא שמי שתומך לא נבחר. בחרו פוליטיקאים שמייצגים אתכם.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ELIGIBILITY -->
-<section id="eligibility" class="py-16 px-5">
+<section id="eligibility" class="py-12 px-5">
   <div class="max-w-6xl mx-auto">
     <div class="grid md:grid-cols-2 gap-8 items-start">
 
@@ -325,8 +373,44 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
         </div>
 
         <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100">
-          <h3 class="font-bold text-[16px] text-navy mb-3 flex items-center gap-2">📬 Stempas — כרטיס ההצבעה</h3>
-          <p class="text-slate-500 text-[13.5px] leading-relaxed">ה-stempas מגיע אוטומטית בדואר בין <strong>23 בפברואר ל-1 במרץ</strong>. לא קיבלתם עד 4 במרץ? פנו לעירייה מיד. ניתן לבקש חלופי אונליין עד <strong>13 במרץ</strong> (17:00) או אישית עד <strong>17 במרץ</strong> (12:00).</p>
+          <h3 class="font-bold text-[16px] text-navy mb-4 flex items-center gap-2">📅 תאריכים חשובים</h3>
+          <div class="flex flex-col pr-2">
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#16a34a"></div>
+              <div>
+                <div class="font-bold text-[13.5px] text-navy">23 בפברואר</div>
+                <div class="text-[12.5px] text-slate-500">תחילת שליחת ה-stempas בדואר</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#e8650a"></div>
+              <div>
+                <div class="font-bold text-[13.5px] text-navy">4 במרץ</div>
+                <div class="text-[12.5px] text-slate-500">לא קיבלתם? פנו לעירייה מיד!</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#e8650a"></div>
+              <div>
+                <div class="font-bold text-[13.5px] text-navy">13 במרץ (17:00)</div>
+                <div class="text-[12.5px] text-slate-500">דדליין לבקשת stempas חלופי אונליין</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#b91c1c"></div>
+              <div>
+                <div class="font-bold text-[13.5px] text-navy">17 במרץ (12:00)</div>
+                <div class="text-[12.5px] text-slate-500">דדליין אחרון לאיסוף stempas אישית + דדליין ייפוי כוח</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#0f2050;width:14px;height:14px;right:-8px"></div>
+              <div>
+                <div class="font-bold text-[14px] text-navy">🗳️ 18 במרץ — יום הבחירות!</div>
+                <div class="text-[12.5px] text-slate-500">קלפיות פתוחות 7:30–21:00</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -336,7 +420,7 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 
 
 <!-- QUICK LINKS -->
-<section class="pb-12 px-5">
+<section class="pb-8 px-5">
   <div class="max-w-6xl mx-auto">
     <div class="grid md:grid-cols-3 gap-5 mb-5">
       <div class="qlink-card">
@@ -420,11 +504,38 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 
 
 <!-- NATIONAL OVERVIEW -->
-<section id="national" class="py-14 px-5 bg-white" style="border-top:1px solid #e8f0fb">
+<section id="national" class="py-10 px-5 bg-white" style="border-top:1px solid #e8f0fb">
   <div class="max-w-6xl mx-auto">
     <div class="section-chip">🏛️ סקירה ארצית</div>
     <h2 class="font-display font-bold text-[26px] md:text-[32px] text-navy mt-1 mb-2">עמדות מפלגות ארציות</h2>
-    <p class="text-slate-500 text-[14.5px] mb-6">דירוג לפי ניתוח CIDI, הצבעות בפרלמנט ומצעים. אף ארגון יהודי לא ממליץ רשמית על מפלגה.</p>
+    <p class="text-slate-500 text-[14.5px] mb-5">דירוג לפי ניתוח CIDI, הצבעות בפרלמנט ומצעים. אף ארגון יהודי לא ממליץ רשמית על מפלגה.</p>
+
+    <!-- Cross-Cutting Patterns -->
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div class="rounded-xl p-5 border" style="background:#f0fdf4;border-color:#86efac">
+        <h4 class="font-bold text-[14px] text-green-800 mb-2 flex items-center gap-2">🟢 מפלגות ידידותיות באופן עקבי</h4>
+        <p class="text-[13px] text-slate-600 leading-relaxed mb-3">מפלגות אלה הצביעו בעד IHRA, נגד BDS, ונגד הצעות חרם בכל עיר בה נבדקו:</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge badge-green">PVV</span>
+          <span class="badge badge-green">VVD</span>
+          <span class="badge badge-green">SGP</span>
+          <span class="badge badge-green">ChristenUnie</span>
+          <span class="badge badge-green">JA21</span>
+          <span class="badge badge-green">BBB</span>
+        </div>
+      </div>
+      <div class="rounded-xl p-5 border" style="background:#fef2f2;border-color:#fca5a5">
+        <h4 class="font-bold text-[14px] text-red-800 mb-2 flex items-center gap-2">🔴 מפלגות בעייתיות באופן עקבי</h4>
+        <p class="text-[13px] text-slate-600 leading-relaxed mb-3">מפלגות אלה תמכו בהצעות BDS, הצביעו נגד IHRA או עזבו הצבעות על אנטישמיות:</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge badge-red">GroenLinks</span>
+          <span class="badge badge-red">SP</span>
+          <span class="badge badge-red">PvdD</span>
+          <span class="badge badge-red">DENK</span>
+          <span class="badge badge-red">BIJ1</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Coalition info banner -->
     <div class="flex flex-wrap gap-3 mb-5">
@@ -438,39 +549,22 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
 
     <div class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100">
       <div class="overflow-x-auto">
-        <table class="nat-table">
+        <table class="nat-table" id="nat-party-table">
           <thead><tr><th style="min-width:110px">מפלגה</th><th class="hide-mobile" style="width:60px">מושבים</th><th class="hide-mobile" style="width:75px">סטטוס</th><th style="min-width:85px">דירוג</th><th style="min-width:70px">IHRA</th><th style="min-width:70px">BDS</th><th>תיאור קצר</th></tr></thead>
-          <tbody>
-            <tr><td class="font-bold">PVV</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">37</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך בתוקף</td><td>מתנגד בתוקף</td><td class="text-[13px]">קולני ביותר פרו-ישראל; מפלגה גדולה ביותר</td></tr>
-            <tr><td class="font-bold">VVD</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">24</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢/🟡</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק על אנטישמיות; עמדה כלפי ישראל משתנה</td></tr>
-            <tr><td class="font-bold">BBB</td><td class="hide-mobile text-center font-bold" style="color:#0f2050">7</td><td class="hide-mobile"><span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:10.5px">קואליציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">מעורבות מעשית; עמדה חזקה נגד אנטישמיות</td></tr>
-            <tr style="border-bottom:2px solid #e8f0fb"><td class="font-bold">NSC</td><td class="hide-mobile text-center font-bold" style="color:#854d0e">20</td><td class="hide-mobile"><span class="badge" style="background:#fef9c3;color:#854d0e;font-size:10.5px">עזבה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>נגד BDS מלא</td><td class="text-[13px]">מתון, עקרוני; עזב ממשלה בשל חילוקי דעות על ישראל</td></tr>
-            <tr><td class="font-bold">PvdA/GL</td><td class="hide-mobile text-center">25</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>עמום</td><td>תומך בסנקציות</td><td class="text-[13px]">מסגור "רצח עם"; אמברגו נשק; לא עקבי בהגנה יהודית</td></tr>
-            <tr><td class="font-bold">D66</td><td class="hide-mobile text-center">9</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡/🔴</span></td><td>הצביע נגד</td><td>תומך בסנקציות</td><td class="text-[13px]">משתמש בתווית "רצח עם"; סקפטי כלפי IHRA</td></tr>
-            <tr><td class="font-bold">SGP</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>הוביל אימוץ</td><td>מתנגד בתוקף</td><td class="text-[13px]">פרו-ישראלי ביותר; מחויבות אמונית</td></tr>
-            <tr><td class="font-bold">ChristenUnie</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">חזק בביטחון יהודי; שותף לחוק אנטישמיות</td></tr>
-            <tr><td class="font-bold">JA21</td><td class="hide-mobile text-center">1</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-green">🟢 מומלץ</span></td><td>תומך</td><td>מתנגד</td><td class="text-[13px]">הצבעה פרו-ישראלית עקבית</td></tr>
-            <tr><td class="font-bold">CDA</td><td class="hide-mobile text-center">5</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>תומך</td><td>מעורב</td><td class="text-[13px]">היסטורית פרו-ישראל; כעת נפתח למדינה פלסטינית</td></tr>
-            <tr><td class="font-bold">Volt</td><td class="hide-mobile text-center">2</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>לא ברור</td><td>נגד BDS מלא</td><td class="text-[13px]">פרוגרסיבי-אירופי; פחות קולני בנושאים יהודיים</td></tr>
-            <tr><td class="font-bold">SP</td><td class="hide-mobile text-center">5</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך</td><td class="text-[13px]">פרו-BDS; נגד IHRA</td></tr>
-            <tr><td class="font-bold">FvD</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-yellow">🟡 זהירות</span></td><td>עמום</td><td>מתנגד רשמית</td><td class="text-[13px]">לא עקבי; בעיות אנטישמיות פנימיות</td></tr>
-            <tr><td class="font-bold">PvdD</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד מפורשות</td><td>תומך בחרם מלא</td><td class="text-[13px]">נגד IHRA; טוען "יותר מדי" תשומת לב לאנטישמיות</td></tr>
-            <tr><td class="font-bold">DENK</td><td class="hide-mobile text-center">3</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>הצביע נגד</td><td>תומך בחרם</td><td class="text-[13px]">מתקיף CIDI; רטוריקה אנטישמית; סירב לגנות</td></tr>
-            <tr><td class="font-bold">BIJ1</td><td class="hide-mobile text-center">1</td><td class="hide-mobile"><span class="badge" style="background:#f1f5f9;color:#64748b;font-size:10.5px">אופוזיציה</span></td><td><span class="badge badge-red">🔴 אזהרה</span></td><td>מתנגד</td><td>BDS מלא</td><td class="text-[13px]">עוין ביותר; רוצה לחקור CIDI</td></tr>
-          </tbody>
+          <tbody id="nat-party-tbody"><!-- Filled by JS --></tbody>
         </table>
       </div>
     </div>
-    <p class="text-[12px] text-slate-400 mt-3">מקור: ניתוח CIDI, הצבעות הכנסת השנייה (Tweede Kamer — 150 מושבים), תוכניות מפלגתיות. עמדות מקומיות עשויות להיות שונות — בדקו לפי עיר למטה.</p>
+    <p class="text-[12px] text-slate-400 mt-3">💡 לחצו על כל מפלגה לפרטים מורחבים. מקור: ניתוח CIDI, הצבעות הכנסת השנייה (Tweede Kamer — 150 מושבים), תוכניות מפלגתיות.</p>
 
     <!-- PLATFORM SUMMARIES -->
-    <div class="mt-10">
+    <div class="mt-8" id="platform-section">
       <div class="section-chip">📋 מצעים לפי נושא</div>
       <h3 class="font-display font-bold text-[22px] md:text-[26px] text-navy mt-1 mb-2">תמצית מצעים — 7 נושאי מפתח</h3>
       <p class="text-slate-500 text-[13.5px] mb-5">סיכום עמדות המפלגות הארציות בנושאים מרכזיים. לחצו על הנושא לצפייה.</p>
 
       <!-- Platform tabs -->
-      <div class="flex flex-wrap gap-2 mb-4" id="platform-tabs">
+      <div class="flex flex-wrap gap-2 mb-4 items-center" id="platform-tabs">
         <button class="city-btn active" onclick="showPlatform('education',this)">🎓 חינוך</button>
         <button class="city-btn" onclick="showPlatform('immigration',this)">🛂 הגירה</button>
         <button class="city-btn" onclick="showPlatform('housing',this)">🏠 דיור</button>
@@ -478,18 +572,74 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
         <button class="city-btn" onclick="showPlatform('environment',this)">🌱 סביבה</button>
         <button class="city-btn" onclick="showPlatform('transport',this)">🚊 תחבורה</button>
         <button class="city-btn" onclick="showPlatform('israel',this)">🇮🇱 עמדה על ישראל</button>
+        <button id="compare-toggle" class="city-btn special" onclick="toggleCompareMode()" style="margin-right:auto">⚖️ השוואה</button>
       </div>
 
       <div id="platform-content" class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100">
         <!-- Filled by JS -->
       </div>
+
+      <!-- Compare bar -->
+      <div id="compare-bar" style="display:none" class="mt-3 p-4 bg-navy rounded-xl text-white flex items-center gap-3 flex-wrap">
+        <span class="text-[13px] font-medium" style="color:rgba(255,255,255,.7)">⚖️ בחרו 2-3 מפלגות להשוואה:</span>
+        <span id="compare-selected" class="text-[13px] font-semibold"></span>
+        <button onclick="runComparison()" class="mr-auto px-4 py-1.5 rounded-lg text-[13px] font-bold transition hover:opacity-90" style="background:#e8650a">השוו עכשיו</button>
+        <button onclick="toggleCompareMode()" class="text-[12px] font-medium cursor-pointer" style="color:rgba(255,255,255,.5)">✕ ביטול</button>
+      </div>
+
+      <!-- Compare results -->
+      <div id="compare-results" class="mt-4" style="display:none"></div>
     </div>
   </div>
 </section>
 
 
+<!-- MUNICIPALITY RANKING -->
+<section class="py-8 px-5" style="border-top:1px solid #e8f0fb">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-chip">🏙️ דירוג עירוני</div>
+    <h3 class="font-display font-bold text-[22px] md:text-[26px] text-navy mt-1 mb-2">איפה הקהילה שלנו בעמדה הכי טובה?</h3>
+    <p class="text-slate-500 text-[13.5px] mb-5">דירוג ערים לפי הרכב מועצה, קואליציה צפויה וסביבה פוליטית עבור הקהילה הישראלית.</p>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="tier-card" style="background:#f0fdf4;border:1.5px solid #86efac" onclick="document.getElementById('cities').scrollIntoView({behavior:'smooth'})">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge badge-green font-bold">🟢 סביבה חיובית</span>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <span class="text-[13.5px] font-semibold text-green-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('amstelveen',document.querySelector('[data-city=amstelveen]'))">⭐ Amstelveen — אלוף מורשת יהודית</span>
+          <span class="text-[13.5px] font-semibold text-green-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('hoofddorp',document.querySelector('[data-city=hoofddorp]'))">✈️ Hoofddorp — מרכז-ימין יציב</span>
+          <span class="text-[13.5px] font-semibold text-green-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('maastricht',document.querySelector('[data-city=maastricht]'))">🍷 Maastricht — מורשת יהודית משמעותית</span>
+          <span class="text-[13.5px] font-semibold text-green-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('purmerend',document.querySelector('[data-city=purmerend]'))">🌿 Purmerend — אין הצעות בעייתיות</span>
+        </div>
+      </div>
+      <div class="tier-card" style="background:#fefce8;border:1.5px solid #fde68a" onclick="document.getElementById('cities').scrollIntoView({behavior:'smooth'})">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge badge-yellow font-bold">🟡 מעורב</span>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <span class="text-[13.5px] font-semibold text-amber-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('den_haag',document.querySelector('[data-city=den_haag]'))">🏛️ Den Haag — שינוי חיובי בסקרים</span>
+          <span class="text-[13.5px] font-semibold text-amber-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('rotterdam',document.querySelector('[data-city=rotterdam]'))">⚓ Rotterdam — ראשת עיר CU חדשה</span>
+          <span class="text-[13.5px] font-semibold text-amber-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('eindhoven',document.querySelector('[data-city=eindhoven]'))">💡 Eindhoven — ראש עיר ממתן</span>
+          <span class="text-[13.5px] font-semibold text-amber-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('leiden',document.querySelector('[data-city=leiden]'))">📚 Leiden — גינוי אנטישמיות פה-אחד</span>
+        </div>
+      </div>
+      <div class="tier-card" style="background:#fef2f2;border:1.5px solid #fca5a5" onclick="document.getElementById('cities').scrollIntoView({behavior:'smooth'})">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge badge-red font-bold">🔴 מאתגר</span>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <span class="text-[13.5px] font-semibold text-red-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('amsterdam',document.querySelector('[data-city=amsterdam]'))">🌉 Amsterdam — איסור ספורט 42-9</span>
+          <span class="text-[13.5px] font-semibold text-red-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('utrecht',document.querySelector('[data-city=utrecht]'))">🎓 Utrecht — חרם BDS אומץ 73%</span>
+          <span class="text-[13.5px] font-semibold text-red-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('nijmegen',document.querySelector('[data-city=nijmegen]'))">🏰 Nijmegen — פרשת Radboud</span>
+          <span class="text-[13.5px] font-semibold text-red-800 cursor-pointer hover:underline" onclick="event.stopPropagation();showCity('hilversum',document.querySelector('[data-city=hilversum]'))">⚠️ Hilversum — פרשת הלר</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CITY HUB -->
-<section id="cities" class="py-14 px-5" style="background:#f8fafc;border-top:1px solid #e8f0fb">
+<section id="cities" class="py-10 px-5" style="background:#f8fafc;border-top:1px solid #e8f0fb">
   <div class="max-w-6xl mx-auto">
     <div class="mb-8">
       <div class="section-chip">📍 המדריך לפי עיר</div>
@@ -540,10 +690,13 @@ body{font-family:'Heebo',sans-serif;background:#f8fafc;color:#0f172a;direction:r
       <div>
         <h4 class="font-bold text-white text-[14px] mb-4">קישורים שימושיים</h4>
         <div class="flex flex-col gap-2">
-          <a href="https://www.waarismijnstemlokaal.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📍 Waarismijnstemlokaal.nl</a>
-          <a href="https://gemeenteraad2026.stemwijzer.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🧭 Stemwijzer 2026</a>
+          <a href="https://www.waarismijnstemlokaal.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📍 Waarismijnstemlokaal.nl — מצאו את הקלפי שלכם</a>
+          <a href="https://gemeenteraad2026.stemwijzer.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🧭 Stemwijzer 2026 — מצפן בחירות</a>
           <a href="https://cidi.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📊 CIDI — מרכז מידע ותיעוד ישראל</a>
           <a href="https://mijnstem.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🗳️ Mijnstem.nl — מדריך הצבעה</a>
+          <a href="https://www.kiesraad.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🏛️ Kiesraad — מועצת הבחירות</a>
+          <a href="https://www.rijksoverheid.nl/onderwerpen/gemeenteraadsverkiezingen" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🇳🇱 Rijksoverheid — מידע רשמי</a>
+          <a href="https://allecijfers.nl" target="_blank" class="text-[13.5px] font-medium transition" style="color:rgba(255,255,255,.6)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📈 AlleCijfers.nl — נתוני עיריות</a>
         </div>
       </div>
       <div>
@@ -582,6 +735,175 @@ function updateCountdown(){
   document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
 }
 updateCountdown();setInterval(updateCountdown,1000);
+
+/* ── NATIONAL PARTIES DATA ── */
+const NATIONAL_PARTIES = [
+  {id:'pvv',name:'PVV',seats:37,status:'קואליציה',statusCls:'coalition',light:'green',ratingLabel:'🟢 מומלץ',ihra:'תומך בתוקף',bds:'מתנגד בתוקף',
+   short:'קולני ביותר פרו-ישראל; מפלגה גדולה ביותר',
+   fullDesc:'PVV של חירט וילדרס היא המפלגה הפרו-ישראלית הקולנית ביותר. וילדרס גר בישראל שנתיים בצעירותו ומבקר שם תדיר. המפלגה השוותה חמאס לנאצים במועצת האג וקראה לעמדה איתנה נגד טרור.',
+   keyVotes:['הצביע בעד אימוץ IHRA','הגיש הצעות חוק נגד BDS','הצביע נגד הכרה במדינה פלסטינית','דחף להגברת ביטחון מוסדות יהודיים'],
+   localPresence:['den_haag','maastricht','zaanstad','purmerend'],
+   website:'https://pvv.nl',
+   notableFigures:['חירט וילדרס — מנהיג המפלגה, ר"מ בפועל']},
+  {id:'vvd',name:'VVD',seats:24,status:'קואליציה',statusCls:'coalition',light:'green',ratingLabel:'🟢/🟡',ihra:'תומך',bds:'מתנגד',
+   short:'חזק על אנטישמיות; עמדה כלפי ישראל משתנה',
+   fullDesc:'VVD הליברלית היא מפלגת מרכז-ימין מובילה. חזקה מאוד במאבק באנטישמיות ובביטחון יהודי. עמדתה כלפי ישראל עקבית בדרך כלל, עם גמישות מסוימת בנושאי מדיניות חוץ.',
+   keyVotes:['הצביע בעד IHRA','נגד סנקציות על ישראל','דאן ויינאנטס הגיש הצעת אי-אמון באמסטרדם','סיימון בקר פרץ בבכי על אנטישמיות ברוטרדם'],
+   localPresence:['amsterdam','amstelveen','den_haag','rotterdam','utrecht','eindhoven','haarlem','hoofddorp','hilversum','leiden','nijmegen','maastricht','zaanstad','purmerend'],
+   website:'https://vvd.nl',
+   notableFigures:['דאן ויינאנטס — מגן הקהילה היהודית באמסטרדם','סיימון בקר — פעיל בולט ברוטרדם','הרברט ראט — אלוף מורשת יהודית באמסטלוון']},
+  {id:'bbb',name:'BBB',seats:7,status:'קואליציה',statusCls:'coalition',light:'green',ratingLabel:'🟢 מומלץ',ihra:'תומך',bds:'מתנגד',
+   short:'מעורבות מעשית; עמדה חזקה נגד אנטישמיות',
+   fullDesc:'BBB של קרולין ון דר פלס מתמקדת בחקלאות ופריפריה. עם זאת, גילתה מעורבות מעשית בנושאי אנטישמיות והצביעה באופן עקבי נגד BDS ובעד IHRA.',
+   keyVotes:['הצביע בעד IHRA','תמך בהגברת ביטחון יהודי','הצביע נגד סנקציות על ישראל'],
+   localPresence:[],
+   website:'https://boerburgerbeweging.nl',
+   notableFigures:['קרולין ון דר פלס — מנהיגת המפלגה']},
+  {id:'nsc',name:'NSC',seats:20,status:'עזבה',statusCls:'left',light:'yellow',ratingLabel:'🟡 זהירות',ihra:'תומך',bds:'נגד BDS מלא',
+   short:'מתון, עקרוני; עזב ממשלה בשל חילוקי דעות על ישראל',
+   fullDesc:'NSC של פיטר אומציגט נוסדה על עקרונות של שלטון חוק וערכים. המפלגה עזבה את הקואליציה בשל חילוקי דעות על מדיניות כלפי ישראל, מה שמעיד על גישה עקרונית אם כי לא חד-משמעית.',
+   keyVotes:['תמך ב-IHRA','התנגד ל-BDS מלא','עזב ממשלה — חילוקי דעות על ישראל'],
+   localPresence:[],
+   website:'https://nieuwsociaalcontract.nl',
+   notableFigures:['פיטר אומציגט — מנהיג המפלגה']},
+  {id:'pvda_gl',name:'PvdA/GL',seats:25,status:'אופוזיציה',statusCls:'opposition',light:'red',ratingLabel:'🔴 אזהרה',ihra:'עמום',bds:'תומך בסנקציות',
+   short:'מסגור "רצח עם"; אמברגו נשק; לא עקבי בהגנה יהודית',
+   fullDesc:'הרשימה המשותפת של PvdA ו-GroenLinks היא הבעייתית ביותר. כנס GroenLinks אימץ החלטת BDS. תוכניות 2026 משתמשות בשפת "רצח עם בעזה". יזמו הצעות חרם באוטרכט. הצביעו בעד איסור ספורט ישראלי באמסטרדם (42-9).',
+   keyVotes:['האלסמה (GL) — נרטיב שנוי במחלוקת על מכבי','יזמו הצעות חרם באוטרכט','הצביעו בעד איסור ספורט באמסטרדם','הובילו החלפת IHRA ב-JDA בהאג','עזבו הצבעת אנטישמיות ברוטרדם'],
+   localPresence:['amsterdam','amstelveen','den_haag','rotterdam','utrecht','eindhoven','haarlem','hoofddorp','hilversum','leiden','nijmegen'],
+   website:'https://groenlinks-pvda.nl',
+   notableFigures:['פמקה האלסמה (GL) — ראשת עיר אמסטרדם','הרה באט (GL) — הובילה החלפת IHRA בהאג']},
+  {id:'d66',name:'D66',seats:9,status:'אופוזיציה',statusCls:'opposition',light:'yellow',ratingLabel:'🟡/🔴',ihra:'הצביע נגד',bds:'תומך בסנקציות',
+   short:'משתמש בתווית "רצח עם"; סקפטי כלפי IHRA',
+   fullDesc:'D66 היא מפלגה פרוגרסיבית-ליברלית עם עמדה מורכבת. ברמה הארצית הצביעה נגד IHRA ותומכת בסנקציות. מקומית — תמונה מעורבת: חתמה על הסכם יהודי באמסטרדם ובאמסטלוון, אך הצביעה בעד איסור ספורט באמסטרדם.',
+   keyVotes:['הצביע נגד IHRA ארצית','הצביע בעד איסור ספורט באמסטרדם','הצביע נגד חרם באוטרכט (חריג חיובי)','חתם על הסכם יהודי באמסטרדם'],
+   localPresence:['amsterdam','amstelveen','den_haag','rotterdam','utrecht','eindhoven','haarlem','hoofddorp','hilversum','leiden','nijmegen','maastricht'],
+   website:'https://d66.nl',
+   notableFigures:['יאן פטרנוטה — העלה אנטישמיות בקמפוס']},
+  {id:'sgp',name:'SGP',seats:3,status:'אופוזיציה',statusCls:'opposition',light:'green',ratingLabel:'🟢 מומלץ',ihra:'הוביל אימוץ',bds:'מתנגד בתוקף',
+   short:'פרו-ישראלי ביותר; מחויבות אמונית',
+   fullDesc:'SGP היא המפלגה הפרו-ישראלית המקיפה ביותר בפרלמנט ההולנדי. הובילה את אימוץ הגדרת IHRA. מחויבותה לישראל נובעת מאמונה דתית נוצרית ועקבית לאורך שנים.',
+   keyVotes:['הוביל אימוץ הגדרת IHRA','הצביע נגד כל הצעת BDS','פיטר גרינוויס כתב יוזמת מורשת יהודית בהאג (40-3)','דחף לחינוך שואה חובה'],
+   localPresence:['den_haag','hoofddorp'],
+   website:'https://sgp.nl',
+   notableFigures:['פיטר גרינוויס — כתב יוזמת מורשת יהודית פורצת דרך']},
+  {id:'cu',name:'ChristenUnie',seats:3,status:'אופוזיציה',statusCls:'opposition',light:'green',ratingLabel:'🟢 מומלץ',ihra:'תומך',bds:'מתנגד',
+   short:'חזק בביטחון יהודי; שותף לחוק אנטישמיות',
+   fullDesc:'ChristenUnie הנוצרית-חברתית מפגינה מחויבות עמוקה לביטחון הקהילה היהודית ולמאבק באנטישמיות. ראשת עיר רוטרדם קרולה סכאוטן היא CU. שותפה ליוזמות מפתח בהאג וברוטרדם.',
+   keyVotes:['שותף ליוזמת אנטישמיות ברוטרדם','שותף ליוזמת מורשת יהודית בהאג','הצביע נגד BDS בכל עיר','חתם על הצהרת שלום באמסטלוון'],
+   localPresence:['amsterdam','amstelveen','den_haag','rotterdam','utrecht','haarlem','hoofddorp','hilversum','leiden','zaanstad'],
+   website:'https://christenunie.nl',
+   notableFigures:['קרולה סכאוטן — ראשת עיר רוטרדם','יודית קלוקנבורג — ממשיכה מורשת גרינוויס בהאג']},
+  {id:'ja21',name:'JA21',seats:1,status:'אופוזיציה',statusCls:'opposition',light:'green',ratingLabel:'🟢 מומלץ',ihra:'תומך',bds:'מתנגד',
+   short:'הצבעה פרו-ישראלית עקבית',
+   fullDesc:'JA21 (Just Answer 21) מצביעה באופן עקבי פרו-ישראלי. הגישה הצעת אי-אמון נגד ראשת עיר אמסטרדם אחרי אירוע מכבי. הצביעה נגד איסור ספורט.',
+   keyVotes:['הגיש הצעת אי-אמון נגד האלסמה אחרי מכבי','הצביע נגד איסור ספורט באמסטרדם','הצבעה פרו-ישראלית עקבית בפרלמנט'],
+   localPresence:['amsterdam'],
+   website:'https://ja21.nl',
+   notableFigures:[]},
+  {id:'cda',name:'CDA',seats:5,status:'אופוזיציה',statusCls:'opposition',light:'yellow',ratingLabel:'🟡 זהירות',ihra:'תומך',bds:'מעורב',
+   short:'היסטורית פרו-ישראל; כעת נפתח למדינה פלסטינית',
+   fullDesc:'CDA הנוצרית-דמוקרטית היא מפלגה היסטורית פרו-ישראלית שנפתחה בשנים האחרונות. ברוב הערים עדיין מצביעה נגד הצעות חרם, אך בהאג תמכה בקואליציה שהחליפה IHRA ב-JDA.',
+   keyVotes:['הצביע נגד איסור ספורט באמסטרדם','הצביע נגד חרם באוטרכט','בהאג — תמך בקואליציה שהחליפה IHRA','חתם על הצהרת שלום באמסטלוון'],
+   localPresence:['amsterdam','amstelveen','den_haag','rotterdam','utrecht','eindhoven','haarlem','hoofddorp','hilversum','leiden','nijmegen','maastricht','zaanstad','purmerend'],
+   website:'https://cda.nl',
+   notableFigures:['סטיין סטיינבקרס — סגן ראש עיר איינדהובן, תיק Brainport']},
+  {id:'volt',name:'Volt',seats:2,status:'אופוזיציה',statusCls:'opposition',light:'yellow',ratingLabel:'🟡 זהירות',ihra:'לא ברור',bds:'נגד BDS מלא',
+   short:'פרוגרסיבי-אירופי; פחות קולני בנושאים יהודיים',
+   fullDesc:'Volt היא מפלגה פרו-אירופית פרוגרסיבית. נציגה ישראלי (איתי גרמי) כיהן באמסטרדם אך לא מתמודד שוב. עמדותיה מעורבות — הצביעה בעד איסור ספורט באמסטרדם אך באוטרכט חברת מועצה אחת הצביעה נגד חרם.',
+   keyVotes:['הצביע בעד איסור ספורט באמסטרדם','חבר מועצה אחד הצביע נגד חרם באוטרכט','עזב הצבעת אנטישמיות ברוטרדם'],
+   localPresence:['amsterdam','den_haag','rotterdam','utrecht','eindhoven','maastricht'],
+   website:'https://voltnederland.org',
+   notableFigures:['איתי גרמי — חבר מועצה ישראלי לשעבר באמסטרדם (לא מתמודד 2026)']},
+  {id:'sp',name:'SP',seats:5,status:'אופוזיציה',statusCls:'opposition',light:'red',ratingLabel:'🔴 אזהרה',ihra:'הצביע נגד',bds:'תומך',
+   short:'פרו-BDS; נגד IHRA',
+   fullDesc:'SP הסוציאליסטית מצביעה באופן עקבי נגד IHRA ובעד הצעות BDS. סירבה להצהרת שלום באמסטלוון. ברוטרדם דחפה לאיסור קבוצת בייסבול ישראלית.',
+   keyVotes:['הצביע נגד IHRA','הצביע בעד הצעות חרם','סירבה להצהרת שלום באמסטלוון','דחפה לאיסור ספורט ישראלי ברוטרדם'],
+   localPresence:['amsterdam','amstelveen','rotterdam','utrecht','haarlem','hilversum','leiden','nijmegen','zaanstad'],
+   website:'https://sp.nl',
+   notableFigures:[]},
+  {id:'fvd',name:'FvD',seats:3,status:'אופוזיציה',statusCls:'opposition',light:'yellow',ratingLabel:'🟡 זהירות',ihra:'עמום',bds:'מתנגד רשמית',
+   short:'לא עקבי; בעיות אנטישמיות פנימיות',
+   fullDesc:'FvD של טיירי בודה טוענת לעמדה פרו-ישראלית, אך בעיות אנטישמיות פנימיות חמורות מערערות אמינות. חבר מועצה לשעבר עזב בטענת "אוירה אנטישמית". הצבעה לא עקבית.',
+   keyVotes:['הצביע נגד איסור ספורט באמסטרדם','אך — ללא אזכור אנטישמיות בתוכניות','בעיות אנטישמיות פנימיות חמורות'],
+   localPresence:['amsterdam','amstelveen','den_haag','hilversum','hoofddorp','maastricht'],
+   website:'https://fvd.nl',
+   notableFigures:[]},
+  {id:'pvdd',name:'PvdD',seats:3,status:'אופוזיציה',statusCls:'opposition',light:'red',ratingLabel:'🔴 אזהרה',ihra:'מתנגד מפורשות',bds:'תומך בחרם מלא',
+   short:'נגד IHRA; טוען "יותר מדי" תשומת לב לאנטישמיות',
+   fullDesc:'PvdD (מפלגה לבעלי חיים) היא מהמפלגות הבעייתיות ביותר. מתנגדת מפורשות להגדרת IHRA. טוענת ש"יותר מדי" תשומת לב ניתנת לאנטישמיות. תומכת בחרם מלא על ישראל. שותפה לקואליציה בהאג שהחליפה IHRA.',
+   keyVotes:['הצביע נגד IHRA מפורשות','תומך בחרם מלא','שותפה להחלפת IHRA ב-JDA בהאג','סגן ראש עיר בהאג השתתף בהפגנת פלסטין'],
+   localPresence:['amsterdam','den_haag','rotterdam','utrecht','eindhoven','haarlem','leiden','nijmegen'],
+   website:'https://partijvoordedieren.nl',
+   notableFigures:[]},
+  {id:'denk',name:'DENK',seats:3,status:'אופוזיציה',statusCls:'opposition',light:'red',ratingLabel:'🔴 אזהרה',ihra:'הצביע נגד',bds:'תומך בחרם',
+   short:'מתקיף CIDI; רטוריקה אנטישמית; סירב לגנות',
+   fullDesc:'DENK היא אולי הבעייתית ביותר. יזמה איסור ספורט ישראלי באמסטרדם (42-9). היחידה שהצביעה נגד יוזמת מורשת יהודית בהאג (40-3). מתקיפה את CIDI באופן שיטתי. רטוריקה שגובלת באנטישמיות.',
+   keyVotes:['יזמה איסור ספורט ישראלי באמסטרדם','היחידה נגד יוזמת מורשת יהודית בהאג (40-3)','הצביעה נגד הצעת גינוי אנטישמיות ברוטרדם','לא חתמה על הסכם יהודי באמסטרדם'],
+   localPresence:['amsterdam','den_haag','rotterdam','utrecht','zaanstad'],
+   website:'https://bewegingdenk.nl',
+   notableFigures:['שהר חאן — יזם איסור ספורט ישראלי באמסטרדם']},
+  {id:'bij1',name:'BIJ1',seats:1,status:'אופוזיציה',statusCls:'opposition',light:'red',ratingLabel:'🔴 אזהרה',ihra:'מתנגד',bds:'BDS מלא',
+   short:'עוין ביותר; רוצה לחקור CIDI',
+   fullDesc:'BIJ1 היא המפלגה העוינית ביותר. דוחה IHRA מפורשות. תומכת ב-BDS מלא. רוצה לחקור CIDI ולנתק קשרים עם ישראל. סירבה להסכם היהודי באמסטרדם. האשימה "חוליגנים של מכבי" באלימות.',
+   keyVotes:['סירבה להסכם היהודי באמסטרדם','רוצה לנתק קשרים עם CIDI','רוצה לחקור CIDI','הצביעה נגד הצעת גינוי אנטישמיות ברוטרדם'],
+   localPresence:['amsterdam','rotterdam','utrecht'],
+   website:'https://bij1.org',
+   notableFigures:[]}
+];
+
+let openNatParty=null;
+
+function renderNationalTable(){
+  const tbody=document.getElementById('nat-party-tbody');
+  let html='';
+  NATIONAL_PARTIES.forEach((p,i)=>{
+    const statusBg=p.statusCls==='coalition'?'background:#e8f0fb;color:#0f2050':p.statusCls==='left'?'background:#fef9c3;color:#854d0e':'background:#f1f5f9;color:#64748b';
+    const ratingCls=p.light==='green'?'badge-green':p.light==='red'?'badge-red':'badge-yellow';
+    const seatColor=p.statusCls==='coalition'?'color:#0f2050':p.statusCls==='left'?'color:#854d0e':'';
+    const sep=i===3?'border-bottom:2px solid #e8f0fb':'';
+    html+=`<tr class="expandable-row" onclick="toggleNatParty('${p.id}')" style="${sep}">
+      <td class="font-bold"><span class="expand-arrow ${openNatParty===p.id?'open':''}">▼</span> ${p.name}</td>
+      <td class="hide-mobile text-center font-bold" style="${seatColor}">${p.seats}</td>
+      <td class="hide-mobile"><span class="badge" style="${statusBg};font-size:10.5px">${p.status}</span></td>
+      <td><span class="badge ${ratingCls}">${p.ratingLabel}</span></td>
+      <td>${p.ihra}</td>
+      <td>${p.bds}</td>
+      <td class="text-[13px]">${p.short}</td>
+    </tr>`;
+    if(openNatParty===p.id){
+      const cityChips=p.localPresence.map(ck=>{
+        const c=CITIES[ck];
+        return c?`<span class="inline-block px-2.5 py-1 rounded-md text-[11.5px] font-semibold cursor-pointer transition hover:shadow-sm" style="background:#e8f0fb;color:#0f2050" onclick="event.stopPropagation();showCity('${ck}',document.querySelector('[data-city=${ck}]'));document.getElementById('cities').scrollIntoView({behavior:'smooth'})">${c.emoji} ${c.he}</span>`:'';
+      }).join('');
+      const votesHtml=p.keyVotes.map(v=>`<li class="text-[13px] text-slate-600 leading-relaxed">${v}</li>`).join('');
+      const figuresHtml=p.notableFigures.length?`<div class="mt-3"><span class="text-[12px] font-bold text-slate-500 uppercase tracking-wide">אישים:</span><div class="mt-1 flex flex-col gap-1">${p.notableFigures.map(f=>`<span class="text-[13px] text-slate-600">👤 ${f}</span>`).join('')}</div></div>`:'';
+      html+=`<tr><td colspan="7" style="padding:0;border-bottom:2px solid #e8f0fb">
+        <div class="expand-panel" style="background:#f8fafc;padding:20px 24px;border-top:1px solid #e2e8f0">
+          <p class="text-[14px] text-slate-700 leading-relaxed mb-4">${p.fullDesc}</p>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <span class="text-[12px] font-bold text-slate-500 uppercase tracking-wide">הצבעות מפתח</span>
+              <ul class="mt-2 flex flex-col gap-1.5 list-disc pr-4">${votesHtml}</ul>
+            </div>
+            <div>
+              ${p.localPresence.length?`<span class="text-[12px] font-bold text-slate-500 uppercase tracking-wide">נוכחות מקומית (לחצו לעיר)</span><div class="mt-2 flex flex-wrap gap-1.5">${cityChips}</div>`:
+              `<span class="text-[12px] font-bold text-slate-500 uppercase tracking-wide">נוכחות מקומית</span><div class="mt-2 text-[13px] text-slate-500">לא רשומה בערים שנבדקו</div>`}
+              ${figuresHtml}
+            </div>
+          </div>
+          ${p.website?`<a href="${p.website}" target="_blank" class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-lg text-[12.5px] font-bold text-white transition hover:opacity-90" style="background:#0f2050" onclick="event.stopPropagation()">🔗 אתר המפלגה — ${p.website.replace('https://','')}</a>`:''}
+        </div>
+      </td></tr>`;
+    }
+  });
+  tbody.innerHTML=html;
+}
+
+function toggleNatParty(id){
+  openNatParty=openNatParty===id?null:id;
+  renderNationalTable();
+}
 
 /* ── PLATFORM DATA ── */
 const PLATFORMS = {
@@ -735,29 +1057,91 @@ const PLATFORMS = {
 };
 
 function showPlatform(key,btn){
-  document.querySelectorAll('#platform-tabs .city-btn').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
+  currentPlatformKey=key;
+  document.querySelectorAll('#platform-tabs .city-btn:not(#compare-toggle)').forEach(b=>b.classList.remove('active'));
+  if(btn&&btn.id!=='compare-toggle')btn.classList.add('active');
   const p=PLATFORMS[key];if(!p)return;
   const rows=p.data.map(d=>{
     const cls=d.light==='green'?'cell-green':d.light==='red'?'cell-red':'cell-yellow';
     const dot={green:'🟢',yellow:'🟡',red:'🔴'}[d.light]||'🟡';
-    return `<tr><td>${d.party}</td><td class="${cls}">${dot} ${d.text}</td></tr>`;
+    const cb=compareMode?`<td style="width:36px;text-align:center"><input type="checkbox" class="compare-cb" ${compareSelected.has(d.party)?'checked':''} onclick="event.stopPropagation();toggleCompareParty('${d.party}')"/></td>`:'';
+    return `<tr>${cb}<td>${d.party}</td><td class="${cls}">${dot} ${d.text}</td></tr>`;
   }).join('');
+  const cbHeader=compareMode?'<th style="width:36px">⚖️</th>':'';
   document.getElementById('platform-content').innerHTML=`
     <div class="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
       <span class="text-[18px]">${p.emoji}</span>
       <h4 class="font-bold text-[15px] text-navy">${p.he}</h4>
+      ${compareMode?'<span class="text-[12px] text-slate-400 mr-auto">סמנו מפלגות להשוואה</span>':''}
     </div>
     <div class="overflow-x-auto">
       <table class="nat-table" style="font-size:13px">
-        <thead><tr><th style="min-width:100px">מפלגה</th><th>עמדה</th></tr></thead>
+        <thead><tr>${cbHeader}<th style="min-width:100px">מפלגה</th><th>עמדה</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
 }
 
-/* init platform on load */
-document.addEventListener('DOMContentLoaded',()=>{showPlatform('education',document.querySelector('#platform-tabs .city-btn'))});
+/* ── PLATFORM COMPARISON ── */
+let compareMode=false;
+let compareSelected=new Set();
+let currentPlatformKey='education';
+
+function toggleCompareMode(){
+  compareMode=!compareMode;
+  compareSelected.clear();
+  document.getElementById('compare-toggle').classList.toggle('active',compareMode);
+  document.getElementById('compare-bar').style.display=compareMode?'flex':'none';
+  document.getElementById('compare-results').style.display='none';
+  updateCompareUI();
+  showPlatform(currentPlatformKey,document.querySelector('#platform-tabs .city-btn.active'));
+}
+
+function toggleCompareParty(party){
+  if(compareSelected.has(party))compareSelected.delete(party);
+  else if(compareSelected.size<3)compareSelected.add(party);
+  updateCompareUI();
+  showPlatform(currentPlatformKey,document.querySelector('#platform-tabs .city-btn.active'));
+}
+
+function updateCompareUI(){
+  const sel=document.getElementById('compare-selected');
+  if(sel)sel.innerHTML=[...compareSelected].map(p=>`<span class="inline-block px-2 py-0.5 rounded bg-white/15 text-[12px] mr-1">${p}</span>`).join('')||'';
+}
+
+function runComparison(){
+  if(compareSelected.size<2){alert('בחרו לפחות 2 מפלגות');return}
+  const parties=[...compareSelected];
+  const topics=Object.keys(PLATFORMS);
+  let html=`<div class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100">
+    <div class="px-5 py-3 border-b border-slate-100"><h4 class="font-bold text-[15px] text-navy">⚖️ השוואה: ${parties.join(' vs ')}</h4></div>
+    <div class="overflow-x-auto"><table class="nat-table" style="font-size:13px"><thead><tr><th style="min-width:80px">נושא</th>`;
+  parties.forEach(p=>{html+=`<th style="min-width:120px;text-align:center">${p}</th>`});
+  html+='</tr></thead><tbody>';
+  topics.forEach(tk=>{
+    const t=PLATFORMS[tk];
+    html+=`<tr><td class="font-bold">${t.emoji} ${t.he}</td>`;
+    parties.forEach(pn=>{
+      const d=t.data.find(x=>x.party===pn);
+      if(d){
+        const cls=d.light==='green'?'cell-green':d.light==='red'?'cell-red':'cell-yellow';
+        const dot={green:'🟢',yellow:'🟡',red:'🔴'}[d.light]||'🟡';
+        html+=`<td class="${cls}" style="text-align:center;font-size:12px">${dot} ${d.text}</td>`;
+      }else{html+=`<td style="text-align:center;color:#94a3b8">—</td>`}
+    });
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div>';
+  document.getElementById('compare-results').innerHTML=html;
+  document.getElementById('compare-results').style.display='block';
+  document.getElementById('compare-results').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* init on load */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderNationalTable();
+  showPlatform('education',document.querySelector('#platform-tabs .city-btn'));
+});
 
 /* ── CITY DATA ── */
 const CITIES = {
@@ -774,18 +1158,38 @@ const CITIES = {
       '💰 ביטחון: העירייה — €125K/שנה. הקהילה היהודית משלמת €800K-1M/שנה בעצמה.',
     ],
     parties:[
-      {en:'VVD',he:'VVD',light:'green',summary:'הצביע נגד איסור ספורט. מציין מפורשות אנטישמיות ובתי ספר יהודיים בתוכנית.'},
-      {en:'JA21',he:'JA21',light:'green',summary:'הגיש הצעת אי-אמון נגד האלסמה אחרי מכבי. הצביע נגד איסור ספורט.'},
-      {en:'CDA',he:'CDA',light:'green',summary:'הצביע נגד איסור ספורט. דחף לביטחון בתי ספר יהודיים.'},
-      {en:'D66',he:'D66',light:'yellow',summary:'חתם על הסכם יהודי אך הצביע בעד איסור ספורט.'},
-      {en:'PvdA',he:'עבודה',light:'yellow',summary:'מורמן עבדה עם הקהילה אך המפלגה משתמשת בשפת "רצח עם". הצביעה בעד איסור.'},
-      {en:'Volt',he:'Volt',light:'yellow',summary:'חבר מועצה ישראלי (Garmy) לא מתמודד שוב. הצביעה בעד איסור ספורט.'},
-      {en:'FvD',he:'FvD',light:'yellow',summary:'הצביע נגד איסור ספורט אך ללא אזכור אנטישמיות.'},
-      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'נרטיב שנוי במחלוקת על מכבי. כנס המפלגה אימץ BDS. הצביעה בעד איסור.'},
-      {en:'SP',he:'SP',light:'red',summary:'ללא אזכור אנטישמיות. מתייחס ל-CIDI בשלילה. הצביע בעד איסור ספורט.'},
-      {en:'DENK',he:'DENK',light:'red',summary:'יזם את הצעת איסור ספורט. לא חתם על ההסכם היהודי.'},
-      {en:'PvdD',he:'PvdD',light:'red',summary:'רוצה לדחות IHRA. רוצה שאמסטרדם תכריז על מדינה פלסטינית.'},
-      {en:'BIJ1',he:'BIJ1',light:'red',summary:'סירבה להסכם היהודי. רוצה לנתק קשרים עם CIDI. דוחה IHRA.'},
+      {en:'VVD',he:'VVD',light:'green',summary:'הצביע נגד איסור ספורט. מציין מפורשות אנטישמיות ובתי ספר יהודיים בתוכנית.',seats:5,coalitionStatus:'opposition',
+       keyVotes:['הצביע נגד איסור ספורט (42-9)','הגיש שאילתות על ביטחון מוסדות יהודיים'],
+       detailReason:'המפלגה האמינה ביותר בנושא ביטחון יהודי באמסטרדם. דאן ויינאנטס מנהיג הסיעה הוא המגן הקולני ביותר של הקהילה.'},
+      {en:'JA21',he:'JA21',light:'green',summary:'הגיש הצעת אי-אמון נגד האלסמה אחרי מכבי. הצביע נגד איסור ספורט.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['הגיש הצעת אי-אמון נגד האלסמה','הצביע נגד איסור ספורט']},
+      {en:'CDA',he:'CDA',light:'green',summary:'הצביע נגד איסור ספורט. דחף לביטחון בתי ספר יהודיים.',seats:1,coalitionStatus:'opposition',
+       keyVotes:['הצביע נגד איסור ספורט','דחף לביטחון בתי ספר יהודיים']},
+      {en:'D66',he:'D66',light:'yellow',summary:'חתם על הסכם יהודי אך הצביע בעד איסור ספורט.',seats:7,coalitionStatus:'coalition',
+       wethouders:[{name:'Steven van Weyenberg',portfolio:'בנייה, תכנון מרחבי'},{name:'Melanie van der Horst',portfolio:'תחבורה, מרחב ציבורי'},{name:'Shula Rijxman',portfolio:'בריאות, עיר דיגיטלית'}],
+       keyVotes:['חתם על הסכם יהודי','אך — הצביע בעד איסור ספורט'],
+       detailReason:'מפלגה מורכבת: חתמה על הסכם יהודי ומציינת הגנה על ילדים יהודיים, אך בהצבעות קונקרטיות הצטרפה לרוב.'},
+      {en:'PvdA',he:'עבודה',light:'yellow',summary:'מורמן עבדה עם הקהילה אך המפלגה משתמשת בשפת "רצח עם". הצביעה בעד איסור.',seats:9,coalitionStatus:'coalition',
+       wethouders:[{name:'Sofyan Mbarki',portfolio:'כלכלה, ספורט, נוער'},{name:'Hester van Buren',portfolio:'כספים, רכש'}],
+       keyVotes:['הצביעה בעד איסור ספורט','תוכנית 2026 משתמשת בשפת "רצח עם בעזה"'],
+       detailReason:'מרג׳ולין מורמן עבדה באופן אישי עם הקהילה (עזבה דצמ׳ 2025), אך המפלגה ככלל נוטה שמאלה בנושא ישראל.'},
+      {en:'Volt',he:'Volt',light:'yellow',summary:'חבר מועצה ישראלי (Garmy) לא מתמודד שוב. הצביעה בעד איסור ספורט.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['הצביעה בעד איסור ספורט','איתי גרמי (ישראלי) לא מתמודד שוב']},
+      {en:'FvD',he:'FvD',light:'yellow',summary:'הצביע נגד איסור ספורט אך ללא אזכור אנטישמיות.',seats:1,coalitionStatus:'opposition',
+       keyVotes:['הצביע נגד איסור ספורט','ללא אזכור אנטישמיות בתוכנית']},
+      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'נרטיב שנוי במחלוקת על מכבי. כנס המפלגה אימץ BDS. הצביעה בעד איסור.',seats:8,coalitionStatus:'coalition',
+       wethouders:[{name:'Rutger Groot Wassink',portfolio:'מדיניות חברתית, מקלט'},{name:'Touria Meliani',portfolio:'תרבות, הכלה'},{name:'Zita Pels',portfolio:'קיימות, דיור ציבורי'}],
+       keyVotes:['כנס המפלגה אימץ החלטת BDS','הצביעה בעד איסור ספורט','האלסמה שלחה מכתב דורש "להביא את ממשלת ישראל לסדר"'],
+       detailReason:'המפלגה הבעייתית ביותר באמסטרדם. ראשת העיר האלסמה (GL) בנרטיב שנוי מחלוקת על מכבי. הצביעה בעד כל הצעה נגד ישראל.'},
+      {en:'SP',he:'SP',light:'red',summary:'ללא אזכור אנטישמיות. מתייחס ל-CIDI בשלילה. הצביע בעד איסור ספורט.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['הצביע בעד איסור ספורט','מתייחס ל-CIDI בשלילה']},
+      {en:'DENK',he:'DENK',light:'red',summary:'יזם את הצעת איסור ספורט. לא חתם על ההסכם היהודי.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['שהר חאן יזם איסור ספורט ישראלי','לא חתם על הסכם יהודי','הצעה עברה 42-9'],
+       detailReason:'DENK היא הכוח המניע מאחורי איסור הספורט הישראלי. שהר חאן ניסח את ההצעה שעברה ברוב מוחץ.'},
+      {en:'PvdD',he:'PvdD',light:'red',summary:'רוצה לדחות IHRA. רוצה שאמסטרדם תכריז על מדינה פלסטינית.',seats:3,coalitionStatus:'opposition',
+       keyVotes:['רוצה לדחות IHRA','רוצה שאמסטרדם תכריז על מדינה פלסטינית']},
+      {en:'BIJ1',he:'BIJ1',light:'red',summary:'סירבה להסכם היהודי. רוצה לנתק קשרים עם CIDI. דוחה IHRA.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['סירבה להסכם היהודי','רוצה לנתק קשרים עם CIDI','דוחה IHRA','האשימה "חוליגנים של מכבי" באלימות']},
     ],
     figures:[
       {he:'דאן ויינאנטס',en:'Daan Wijnants',party:'VVD',note:'מגן הקהילה היהודית הקולני ביותר אחרי מכבי. מנהיג סיעה.',emoji:'👤'},
@@ -805,17 +1209,29 @@ const CITIES = {
       '⚠️ מיזוג 2026: GroenLinks ו-PvdA רצים ברשימה משותפת — GL סירבה לשלום אך PvdA חתמה. עמדה לא ודאית.',
     ],
     parties:[
-      {en:'VVD',he:'VVD',light:'green',summary:'הרברט ראט — אלוף מורשת יהודית. יזם אנדרטאות, מחקר רכוש יהודי, ספר היסטורי.'},
-      {en:'D66',he:'D66',light:'green',summary:'חתם על הצהרת שלום. תיק גיוון. שיתוף פעולה.'},
-      {en:'CDA',he:'CDA',light:'green',summary:'מסורת אוהדת ישראל. חתם על הצהרת שלום.'},
-      {en:'ChristenUnie',he:'ChristenUnie',light:'green',summary:'פרו-ישראלי בתוקף. חתם על הצהרת שלום.'},
-      {en:'GvA',he:'Goed voor Amstelveen',light:'green',summary:'מפלגה מקומית פרגמטית. חתמה על הצהרת שלום.'},
-      {en:'PvdA',he:'עבודה',light:'yellow',summary:'הגישה שאלות נגד BDS יחד עם VVD. כעת במיזוג עם GL.'},
-      {en:'bbA',he:'Burgerbelangen',light:'yellow',summary:'מפלגה מקומית. ללא עמדה ספציפית. פרגמטית.'},
-      {en:'AVA',he:'Actief voor Amstelveen',light:'yellow',summary:'קלטה את ירון ון קונינגסוולד (רקע ישראלי-הולנדי).'},
-      {en:'FvD',he:'FvD',light:'yellow',summary:'חדש באמסטלוון. סיגנלים מעורבים ארצית.'},
-      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'סירבה להצהרת שלום. ביקורתית כלפי ישראל ארצית.'},
-      {en:'SP',he:'SP',light:'red',summary:'סירבה להצהרת שלום. לא מתחייבת לגבי חרמות BDS.'},
+      {en:'VVD',he:'VVD',light:'green',summary:'הרברט ראט — אלוף מורשת יהודית. יזם אנדרטאות, מחקר רכוש יהודי, ספר היסטורי.',seats:8,coalitionStatus:'coalition',
+       wethouders:[{name:'Herbert Raat',portfolio:'תחבורה, תרבות, מורשת, ספורט'},{name:'Adam Elzakalai',portfolio:'כספים, דיור, כלכלה'}],
+       keyVotes:['הגיש שאלות נגד BDS יחד עם PvdA','יזם אנדרטת "לעולם לא חזרו"','מחקר רכוש יהודי'],
+       detailReason:'הרברט ראט הוא האלוף הבולט ביותר של מורשת יהודית בכל הולנד. עבד בישראל (1986-88). מתמודד כמספר 1 ב-2026.'},
+      {en:'D66',he:'D66',light:'green',summary:'חתם על הצהרת שלום. תיק גיוון. שיתוף פעולה.',seats:7,coalitionStatus:'coalition',
+       wethouders:[{name:'Floor Gordon',portfolio:'תכנון, קיימות, גיוון'},{name:'Frank Berkhout',portfolio:'חינוך, נוער'}],
+       keyVotes:['חתם על הצהרת שלום']},
+      {en:'CDA',he:'CDA',light:'green',summary:'מסורת אוהדת ישראל. חתם על הצהרת שלום.',seats:1,coalitionStatus:'opposition',keyVotes:['חתם על הצהרת שלום']},
+      {en:'ChristenUnie',he:'ChristenUnie',light:'green',summary:'פרו-ישראלי בתוקף. חתם על הצהרת שלום.',seats:1,coalitionStatus:'opposition',keyVotes:['חתם על הצהרת שלום']},
+      {en:'GvA',he:'Goed voor Amstelveen',light:'green',summary:'מפלגה מקומית פרגמטית. חתמה על הצהרת שלום.',seats:2,coalitionStatus:'coalition',keyVotes:['חתמה על הצהרת שלום']},
+      {en:'PvdA',he:'עבודה',light:'yellow',summary:'הגישה שאלות נגד BDS יחד עם VVD. כעת במיזוג עם GL.',seats:3,coalitionStatus:'coalition',
+       wethouders:[{name:'Marijn van Ballegooijen',portfolio:'רווחה, עבודה, גיוון'}],
+       keyVotes:['הגישה שאלות נגד BDS','כעת ברשימה משותפת עם GL — עמדה לא ודאית'],
+       detailReason:'המיזוג עם GL מעורר דאגה: GL סירבה להצהרת שלום, PvdA חתמה. עמדת הרשימה המשותפת ב-2026 עדיין לא ברורה.'},
+      {en:'bbA',he:'Burgerbelangen',light:'yellow',summary:'מפלגה מקומית. ללא עמדה ספציפית. פרגמטית.',seats:5,coalitionStatus:'opposition'},
+      {en:'AVA',he:'Actief voor Amstelveen',light:'yellow',summary:'קלטה את ירון ון קונינגסוולד (רקע ישראלי-הולנדי).',seats:2,coalitionStatus:'opposition',
+       detailReason:'ירון ון קונינגסוולד ברשימה — רקע ישראלי-הולנדי. קשר פוטנציאלי לקהילה הישראלית.'},
+      {en:'FvD',he:'FvD',light:'yellow',summary:'חדש באמסטלוון. סיגנלים מעורבים ארצית.',seats:1,coalitionStatus:'opposition'},
+      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'סירבה להצהרת שלום. ביקורתית כלפי ישראל ארצית.',seats:4,coalitionStatus:'opposition',
+       keyVotes:['סירבה להצהרת שלום','כנס ארצי אימץ BDS'],
+       detailReason:'סירבה להצהרת שלום בטענה שהתחייבויות כלליות נגד אפליה "מספיקות". רוני נפתנאלי (CIDI לשעבר) כינה זאת "מגוחך לחלוטין".'},
+      {en:'SP',he:'SP',light:'red',summary:'סירבה להצהרת שלום. לא מתחייבת לגבי חרמות BDS.',seats:2,coalitionStatus:'opposition',
+       keyVotes:['סירבה להצהרת שלום','לא מתחייבת נגד BDS']},
     ],
     figures:[
       {he:'הרברט ראט',en:'Herbert Raat',party:'VVD',note:'אלוף מורשת יהודית. יזם אנדרטאות, מחקר רכוש, סרט תיעודי. עבד בישראל (1986-88). מתמודד כמספר 1 ב-2026.',emoji:'👤'},
@@ -835,16 +1251,34 @@ const CITIES = {
       '📊 Hart voor Den Haag בסקרים: ~14 מושבים — צפויה להוביל קואליציה. שינוי חיובי משמעותי.',
     ],
     parties:[
-      {en:'Hart voor Den Haag',he:'לב האג',light:'green',summary:'הגיש הצעות לחינוך שואה, טיולי אושוויץ, תוכנית נגד שנאת יהודים. ~14 מושבים בסקרים.'},
-      {en:'VVD',he:'VVD',light:'green',summary:'שותף ליוזמת מורשת יהודית. פרו-ישראלי ארצית.'},
-      {en:'ChristenUnie-SGP',he:'CU-SGP',light:'green',summary:'גרינוויס כתב יוזמה פורצת דרך. קלוקנבורג ממשיכה עם "מורשת יהודית על המפה".'},
-      {en:'PVV',he:'PVV',light:'green',summary:'פרו-ישראלי חד-משמעית. השווה חמאס לנאצים במועצה.'},
-      {en:'CDA',he:'CDA',light:'yellow',summary:'הצביע בעד יוזמת מורשת אך תמך בקואליציה שהחליפה IHRA ב-JDA.'},
-      {en:'D66',he:'D66',light:'yellow',summary:'הצביע בעד יוזמת מורשת. סגני ראש עיר השתתפו בהפגנת פלסטין.'},
-      {en:'FvD',he:'FvD',light:'yellow',summary:'סיגנלים מעורבים ארצית.'},
-      {en:'GroenLinks-PvdA',he:'ירוקים-עבודה',light:'red',summary:'הובילה החלפת IHRA ב-JDA. הגישה הצעת "רצח עם". סגנים בהפגנת פלסטין.'},
-      {en:'PvdD',he:'PvdD',light:'red',summary:'שותפה להחלפת IHRA. סגן ראש עיר בהפגנת פלסטין.'},
-      {en:'DENK',he:'DENK',light:'red',summary:'המפלגה היחידה שהצביעה נגד יוזמת מורשת יהודית. דוחפת הצעות "רצח עם".'},
+      {en:'Hart voor Den Haag',he:'לב האג',light:'green',summary:'הגיש הצעות לחינוך שואה, טיולי אושוויץ, תוכנית נגד שנאת יהודים. ~14 מושבים בסקרים.',seats:'9→~14',coalitionStatus:'opposition',
+       keyVotes:['הגיש הצעות לחינוך שואה חובה','תוכנית טיולי אושוויץ','~14 מושבים בסקרים — צפויה להוביל קואליציה הבאה'],
+       detailReason:'ריצ׳ארד דה מוס כותב באופן קבוע נגד אנטישמיות. שינוי חיובי משמעותי צפוי ב-2026 — סבירות גבוהה שתוביל קואליציה.'},
+      {en:'VVD',he:'VVD',light:'green',summary:'שותף ליוזמת מורשת יהודית. פרו-ישראלי ארצית.',seats:7,coalitionStatus:'opposition',
+       keyVotes:['שותף ליוזמת מורשת יהודית (40-3)']},
+      {en:'ChristenUnie-SGP',he:'CU-SGP',light:'green',summary:'גרינוויס כתב יוזמה פורצת דרך. קלוקנבורג ממשיכה עם "מורשת יהודית על המפה".',seats:1,coalitionStatus:'opposition',
+       keyVotes:['גרינוויס כתב 17 סעיפי פעולה למורשת יהודית','קלוקנבורג — "מורשת יהודית על המפה" (אפריל 2025)','הצעת "תמונה טובה יותר של אנטישמיות" עברה'],
+       detailReason:'למרות מושב בודד, CU-SGP היא הכוח המניע מאחורי יוזמות מורשת יהודית בהאג.'},
+      {en:'PVV',he:'PVV',light:'green',summary:'פרו-ישראלי חד-משמעית. השווה חמאס לנאצים במועצה.',seats:1,coalitionStatus:'opposition',
+       keyVotes:['השווה חמאס לנאצים במועצה']},
+      {en:'CDA',he:'CDA',light:'yellow',summary:'הצביע בעד יוזמת מורשת אך תמך בקואליציה שהחליפה IHRA ב-JDA.',seats:3,coalitionStatus:'coalition',
+       wethouders:[{name:'Hilbert Bredemeijer',portfolio:'חינוך, נוער, ספורט'}],
+       keyVotes:['הצביע בעד יוזמת מורשת','אך — תמך בקואליציה שהחליפה IHRA ב-JDA']},
+      {en:'D66',he:'D66',light:'yellow',summary:'הצביע בעד יוזמת מורשת. סגני ראש עיר השתתפו בהפגנת פלסטין.',seats:8,coalitionStatus:'coalition',
+       wethouders:[{name:'Klaas Verschuure',portfolio:'פיתוח עירוני, אירופה'},{name:'Saskia Bruines',portfolio:'כספים, תרבות, כלכלה'}],
+       keyVotes:['הצביע בעד יוזמת מורשת','סגני ראש עיר השתתפו בהפגנת פלסטין של 100,000+']},
+      {en:'FvD',he:'FvD',light:'yellow',summary:'סיגנלים מעורבים ארצית.',seats:1,coalitionStatus:'opposition'},
+      {en:'GroenLinks-PvdA',he:'ירוקים-עבודה',light:'red',summary:'הובילה החלפת IHRA ב-JDA. הגישה הצעת "רצח עם". סגנים בהפגנת פלסטין.',seats:8,coalitionStatus:'coalition',
+       wethouders:[{name:'Arjen Kapteijns (GL)',portfolio:'אנרגיה, ניידות'},{name:'Mariëlle Vavier (GL)',portfolio:'עוני, הכלה, בינלאומי'},{name:'Martijn Balster (PvdA)',portfolio:'דיור, שכונות'}],
+       keyVotes:['הרה באט (GL) הובילה החלפת IHRA ב-JDA','הגישה הצעת "רצח עם"','סגני ראש עיר השתתפו בהפגנת פלסטין'],
+       detailReason:'הכוח המניע מאחורי ההחלשה של הגדרת IHRA בהאג. הובילה מעבר ל-Jerusalem Declaration שהיא חלשה יותר משמעותית.'},
+      {en:'PvdD',he:'PvdD',light:'red',summary:'שותפה להחלפת IHRA. סגן ראש עיר בהפגנת פלסטין.',seats:3,coalitionStatus:'coalition',
+       wethouders:[{name:'Robert Barker',portfolio:'מרחב ציבורי, בע"ח, סביבה'}],
+       keyVotes:['שותפה להחלפת IHRA','סגן ראש עיר השתתף בהפגנת פלסטין']},
+      {en:'DENK',he:'DENK',light:'red',summary:'המפלגה היחידה שהצביעה נגד יוזמת מורשת יהודית. דוחפת הצעות "רצח עם".',seats:2,coalitionStatus:'coalition',
+       wethouders:[{name:'Nur Icar',portfolio:'חינוך-שוק עבודה, שכונות'}],
+       keyVotes:['היחידה שהצביעה נגד יוזמת מורשת יהודית (40-3!)','דוחפת הצעות "רצח עם"'],
+       detailReason:'DENK היא המפלגה היחידה מתוך 45 חברי מועצה שהצביעה נגד יוזמה ב-17 סעיפים למורשת יהודית ונגד אנטישמיות.'},
     ],
     figures:[
       {he:'יודית קלוקנבורג',en:'Judith Klokkenburg',party:'CU-SGP',note:'ממשיכה מורשת גרינוויס. הצעות "מורשת יהודית על המפה" ו"תמונה טובה יותר של אנטישמיות" (אפריל 2025).',emoji:'👤'},
@@ -863,18 +1297,34 @@ const CITIES = {
       '🔴 הצעת עזה (מאי 2025): הצעה נגד "פשעי מלחמה בעזה" אומצה. הקהילה היהודית: "שוב המועצה הותירה את יהודיה בקור".',
     ],
     parties:[
-      {en:'ChristenUnie',he:'איחוד נוצרי',light:'green',summary:'שותפה ליוזמת אנטישמיות. ראשת העיר סכאוטן היא CU.'},
-      {en:'Leefbaar Rotterdam',he:'לפבאר רוטרדם',light:'green',summary:'שותפה ליוזמה. עקבית נגד אנטישמיות. כינתה העזיבה "חרפה".'},
-      {en:'VVD',he:'VVD',light:'green',summary:'סיימון בקר — פעיל בולט. דיבר בחנוכה. שאילתות על אנטישמיות בקמפוסים.'},
-      {en:'CDA',he:'CDA',light:'green',summary:'מיושר עם CU/VVD/Leefbaar בנושאי ישראל.'},
-      {en:'D66',he:'D66',light:'yellow',summary:'עזב את האולם באוקטובר 2023. כינה את ההצבעה "מורכבת מדי". הצביע בעד הצעת עזה.'},
-      {en:'Volt',he:'Volt',light:'yellow',summary:'עזב; כינה הצעת אנטישמיות "חד-צדדית". הצביע בעד הצעת עזה.'},
-      {en:'50PLUS',he:'50PLUS',light:'yellow',summary:'עזב את האולם באוקט׳ 2023 אך התנגד להצעת עזה.'},
-      {en:'PvdA',he:'עבודה',light:'red',summary:'עזבה; "לא אאלץ לבחור בין יהודים לפלסטינים". הצביעה בעד הצעת עזה.'},
-      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'עזבה; הצביעה בעד הצעת עזה. כנס ארצי אימץ החלטת BDS.'},
-      {en:'SP',he:'SP',light:'red',summary:'עזב; הצביע בעד הצעת עזה. דחף לאסור קבוצת בייסבול ישראלית.'},
-      {en:'DENK',he:'DENK',light:'red',summary:'הצביע נגד הצעת גינוי אנטישמיות (לא רק עזב — דחה אקטיבית). דחף לאיסור ספורט ישראלי.'},
-      {en:'BIJ1',he:'BIJ1',light:'red',summary:'הצביעה נגד הצעת גינוי אנטישמיות. תומכת בניתוק קשרים עם ישראל.'},
+      {en:'ChristenUnie',he:'איחוד נוצרי',light:'green',summary:'שותפה ליוזמת אנטישמיות. ראשת העיר סכאוטן היא CU.',coalitionStatus:'opposition',
+       keyVotes:['שותפה ליוזמת אנטישמיות (5 ימים אחרי 7.10)'],
+       detailReason:'ראשת עיר רוטרדם קרולה סכאוטן (CU) מונתה באוקט׳ 2024, החליפה את אחמד אבואטאלב. נקודת אור משמעותית.'},
+      {en:'Leefbaar Rotterdam',he:'לפבאר רוטרדם',light:'green',summary:'שותפה ליוזמה. עקבית נגד אנטישמיות. כינתה העזיבה "חרפה".',coalitionStatus:'coalition',
+       wethouders:[{name:'Robert Simons',portfolio:'נמל, כלכלה, כספים'},{name:'Ronald Buijt',portfolio:'טיפול, קשישים'}],
+       keyVotes:['שותפה ליוזמת אנטישמיות','סיימון סולמנס כינה את העזיבה "חרפה"']},
+      {en:'VVD',he:'VVD',light:'green',summary:'סיימון בקר — פעיל בולט. דיבר בחנוכה. שאילתות על אנטישמיות בקמפוסים.',coalitionStatus:'coalition',
+       wethouders:[{name:'Tim Versnel',portfolio:'עבודה, עובדים זרים EU'},{name:'Pascal Lansink-Bastemeijer',portfolio:'אכיפה, ניידות'}],
+       keyVotes:['סיימון בקר פרץ בבכי בהצגת הצעת אנטישמיות','דיבר בחגיגות חנוכה','שאילתות על אנטישמיות בקמפוס ובחינוך שואה']},
+      {en:'CDA',he:'CDA',light:'green',summary:'מיושר עם CU/VVD/Leefbaar בנושאי ישראל.',coalitionStatus:'opposition',keyVotes:['מיושר עם CU/VVD/Leefbaar בהצבעות']},
+      {en:'D66',he:'D66',light:'yellow',summary:'עזב את האולם באוקטובר 2023. כינה את ההצבעה "מורכבת מדי". הצביע בעד הצעת עזה.',coalitionStatus:'coalition',
+       wethouders:[{name:'Saïd Kasmi',portfolio:'חינוך, תרבות'},{name:'Chantal Zeegers',portfolio:'אקלים, דיור'}],
+       keyVotes:['עזב את האולם באוקט׳ 2023','הצביע בעד הצעת עזה (מאי 2025)']},
+      {en:'Volt',he:'Volt',light:'yellow',summary:'עזב; כינה הצעת אנטישמיות "חד-צדדית". הצביע בעד הצעת עזה.',coalitionStatus:'opposition',
+       keyVotes:['עזב הצבעה','כינה הצעת אנטישמיות "חד-צדדית"','הצביע בעד הצעת עזה']},
+      {en:'50PLUS',he:'50PLUS',light:'yellow',summary:'עזב את האולם באוקט׳ 2023 אך התנגד להצעת עזה.',coalitionStatus:'opposition'},
+      {en:'PvdA',he:'עבודה',light:'red',summary:'עזבה; "לא אאלץ לבחור בין יהודים לפלסטינים". הצביעה בעד הצעת עזה.',coalitionStatus:'opposition',
+       keyVotes:['עזבה את האולם באוקט׳ 2023','"לא אאלץ לבחור בין יהודים לפלסטינים"','הצביעה בעד הצעת עזה']},
+      {en:'GroenLinks',he:'ירוקים-שמאל',light:'red',summary:'עזבה; הצביעה בעד הצעת עזה. כנס ארצי אימץ החלטת BDS.',coalitionStatus:'opposition',
+       keyVotes:['עזבה את ההצבעה','הצביעה בעד הצעת עזה','כנס ארצי אימץ החלטת BDS']},
+      {en:'SP',he:'SP',light:'red',summary:'עזב; הצביע בעד הצעת עזה. דחף לאסור קבוצת בייסבול ישראלית.',coalitionStatus:'opposition',
+       keyVotes:['עזב את ההצבעה','הצביע בעד הצעת עזה','דחף לאסור קבוצת בייסבול ישראלית']},
+      {en:'DENK',he:'DENK',light:'red',summary:'הצביע נגד הצעת גינוי אנטישמיות (לא רק עזב — דחה אקטיבית). דחף לאיסור ספורט ישראלי.',coalitionStatus:'coalition',
+       wethouders:[{name:'Faouzi Achbar',portfolio:'רווחה, ספורט, דיגיטלי'},{name:'Abigail Norville',portfolio:'עוני, חובות'}],
+       keyVotes:['הצביע נגד הצעת גינוי אנטישמיות — דחה אקטיבית!','דחף לאיסור ספורט ישראלי'],
+       detailReason:'לא רק עזבה את ההצבעה כמו מפלגות אחרות — DENK הצביעה אקטיבית נגד הצעת גינוי אנטישמיות 5 ימים אחרי 7.10.'},
+      {en:'BIJ1',he:'BIJ1',light:'red',summary:'הצביעה נגד הצעת גינוי אנטישמיות. תומכת בניתוק קשרים עם ישראל.',coalitionStatus:'opposition',
+       keyVotes:['הצביעה נגד הצעת גינוי אנטישמיות','תומכת בניתוק קשרים עם ישראל']},
     ],
     figures:[
       {he:'סיימון בקר',en:'Simon Becker',party:'VVD',note:'פרץ בבכי בהצגת הצעת אנטישמיות. דיבר בחגיגות חנוכה. שאילתות על אנטישמיות בקמפוס.',emoji:'👤'},
@@ -1128,8 +1578,18 @@ function badge(light,label){
 }
 function lightLabel(l){return{green:'מומלץ',yellow:'זהירות',red:'אזהרה'}[l]||l}
 
+/* ── CITY PARTY EXPAND ── */
+let openCityParty=null;
+let currentCityKey='amsterdam';
+
+function toggleCityParty(pid){
+  openCityParty=openCityParty===pid?null:pid;
+  document.getElementById('city-panel').innerHTML=renderCity(currentCityKey);
+}
+
 /* ── RENDER CITY ── */
 function renderCity(key){
+  currentCityKey=key;
   const c=CITIES[key];if(!c)return '';
   const isHilversum=key==='hilversum';
 
@@ -1149,12 +1609,30 @@ function renderCity(key){
       </div>
     </div>`;
 
-  const partyRows=c.parties.map(p=>`
-    <tr>
-      <td class="party-name-cell"><strong>${p.en}</strong>${p.he!==p.en?`<span>${p.he}</span>`:''}</td>
+  const partyRows=c.parties.map((p,i)=>{
+    const pid=key+'_'+p.en.replace(/[\s\/]/g,'_');
+    const isOpen=openCityParty===pid;
+    let row=`<tr class="expandable-row" onclick="toggleCityParty('${pid}')">
+      <td class="party-name-cell"><span class="expand-arrow ${isOpen?'open':''}">▼</span> <strong>${p.en}</strong>${p.he!==p.en?`<span>${p.he}</span>`:''}</td>
       <td>${badge(p.light)}</td>
       <td class="text-[13px] text-slate-600 leading-relaxed">${p.summary}</td>
-    </tr>`).join('');
+    </tr>`;
+    if(isOpen){
+      let details=[];
+      if(p.seats) details.push(`<span class="badge" style="background:#e8f0fb;color:#0f2050;font-size:11px">🪑 ${p.seats} מושבים</span>`);
+      if(p.coalitionStatus) details.push(`<span class="badge ${p.coalitionStatus==='coalition'?'badge-green':p.coalitionStatus==='opposition'?'':'badge-yellow'}" style="font-size:11px">${p.coalitionStatus==='coalition'?'✅ קואליציה':'אופוזיציה'}</span>`);
+      const wethHtml=p.wethouders&&p.wethouders.length?`<div class="mt-2"><span class="text-[11.5px] font-bold text-slate-400 uppercase tracking-wide">סגני ראש עיר:</span><div class="mt-1 flex flex-col gap-1">${p.wethouders.map(w=>`<span class="text-[13px] text-slate-600">👤 <strong>${w.name}</strong> — ${w.portfolio}</span>`).join('')}</div></div>`:'';
+      const votesHtml=p.keyVotes&&p.keyVotes.length?`<div class="mt-2"><span class="text-[11.5px] font-bold text-slate-400 uppercase tracking-wide">הצבעות מפתח:</span><ul class="mt-1 flex flex-col gap-1 list-disc pr-4">${p.keyVotes.map(v=>`<li class="text-[13px] text-slate-600">${v}</li>`).join('')}</ul></div>`:'';
+      const reasonHtml=p.detailReason?`<p class="text-[13.5px] text-slate-700 leading-relaxed">${p.detailReason}</p>`:'';
+      row+=`<tr><td colspan="3" style="padding:0;border-bottom:2px solid #e8f0fb">
+        <div class="expand-panel" style="background:#f8fafc;padding:16px 20px;border-top:1px solid #e2e8f0" onclick="event.stopPropagation()">
+          <div class="flex flex-wrap gap-2 mb-3">${details.join('')}</div>
+          ${reasonHtml}${wethHtml}${votesHtml}
+        </div>
+      </td></tr>`;
+    }
+    return row;
+  }).join('');
 
   const figuresHtml=c.figures.length>0?`
     <div class="mt-6">
@@ -1237,6 +1715,12 @@ function renderCity(key){
 
       ${figuresHtml}
 
+      <!-- External links for this city -->
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a href="https://gemeenteraad2026.stemwijzer.nl" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-[13px] font-bold text-white transition hover:opacity-90" style="background:#0f2050">🧭 StemWijzer — ${c.he}</a>
+        ${!isHilversum?`<a href="https://www.waarismijnstemlokaal.nl" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-[13px] font-bold transition hover:opacity-90" style="background:#e8f0fb;color:#0f2050">📍 מצאו את הקלפי שלכם</a>`:''}
+      </div>
+
       <div class="flex items-center gap-4 flex-wrap mt-5 pt-4 border-t border-slate-100">
         <span class="text-[12px] text-slate-400 font-medium">מפתח:</span>
         <span class="badge badge-green">🟢 מומלץ — עמדה תומכת</span>
@@ -1248,8 +1732,9 @@ function renderCity(key){
 
 /* ── CITY HUB LOGIC ── */
 function showCity(key,btn){
+  openCityParty=null;
   document.querySelectorAll('.city-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  if(btn)btn.classList.add('active');
   const panel=document.getElementById('city-panel');
   panel.innerHTML=renderCity(key);
   panel.className='city-panel';
