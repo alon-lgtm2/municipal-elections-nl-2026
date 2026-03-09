@@ -4,9 +4,6 @@ services:
     runtime: static
     staticPublishPath: .
     routes:
-      - type: redirect
-        source: /
-        destination: /elect
       - type: rewrite
         source: /elect
         destination: /elect/index.html
