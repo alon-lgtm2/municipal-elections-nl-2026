@@ -5,8 +5,8 @@ services:
     staticPublishPath: .
     routes:
       - type: redirect
-        source: /elect
-        destination: /
+        source: /
+        destination: /elect
       - type: rewrite
-        source: /*
-        destination: /index.html
+        source: /elect
+        destination: /elect/index.html
